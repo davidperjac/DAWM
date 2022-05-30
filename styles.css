@@ -1,5 +1,11 @@
 * {
     font-family: "Roboto", sans-serif;
+    margin: auto;
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 a {
@@ -11,28 +17,40 @@ a {
     display: flex;
     justify-content: space-around;
     background-color: #7c3e66;
-    color: white;
+    color: #f2ebe9;
     font-size: 25px;
     padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 #home {
     text-align: center;
-    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #7c3e66;
+    color: #f2ebe9;
 }
 
 #about {
-    height: 70vh;
+    height: 130vh;
+    background-color: #f2ebe9;
 }
 
 #projects {
-    height: 70vh;
+    height: 100vh;
+    background-color: #7c3e66;
 }
 
 #contact {
-    height: 70vh;
+    height: 80vh;
+    background-color: #f2ebe9;
 }
 
 #footer {
-    height: 10vh;
+    height: 7vh;
+    background-color: #7c3e66;
 }
