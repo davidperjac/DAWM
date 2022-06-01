@@ -1,3 +1,13 @@
+/*COLOR PALETTE */
+
+/*  #7C3E66 
+    #F2EBE9
+    #A5BECC
+    #243A73
+*/
+
+/*APPLIED TO THE WHOLE PAGE*/
+
 * {
     font-family: "Roboto", sans-serif;
     margin: auto;
@@ -13,6 +23,8 @@ a {
     text-decoration: none;
 }
 
+/*IDS OF THE PAGE*/
+
 #navbar {
     display: flex;
     justify-content: space-around;
@@ -20,7 +32,7 @@ a {
     color: #f2ebe9;
     font-size: 25px;
     padding: 15px;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     left: 0;
@@ -54,3 +66,5 @@ a {
     height: 7vh;
     background-color: #7c3e66;
 }
+
+/*APPLIED TO CLASSES*/
