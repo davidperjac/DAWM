@@ -1,3 +1,4 @@
-DAVID PEREZ JACOME
+David Pérez Jácome
 
-team react
+mail: diperez@espol.edu.ec
+GitHub: davidperjac

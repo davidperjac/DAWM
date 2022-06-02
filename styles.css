@@ -9,62 +9,64 @@
 /*APPLIED TO THE WHOLE PAGE*/
 
 * {
-    font-family: "Roboto", sans-serif;
-    margin: auto;
-    scroll-behavior: smooth;
+	font-family: 'Ubuntu', sans-serif;
+	margin: auto;
+	scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 /*IDS OF THE PAGE*/
 
 #navbar {
-    display: flex;
-    justify-content: space-around;
-    background-color: #7c3e66;
-    color: #f2ebe9;
-    font-size: 25px;
-    padding: 15px;
-    position: sticky;
-    width: 100%;
-    top: 0;
-    left: 0;
+	display: flex;
+	justify-content: space-around;
+	background-color: #7c3e66;
+	color: #f2ebe9;
+	font-size: 25px;
+	padding: 15px;
+	position: sticky;
+	top: 0;
+	left: 0;
 }
 
 #home {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #7c3e66;
-    color: #f2ebe9;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+	background-color: #7c3e66;
+	color: #f2ebe9;
 }
 
 #about {
-    height: 130vh;
-    background-color: #f2ebe9;
+	height: 130vh;
+	background-color: #f2ebe9;
 }
 
 #projects {
-    height: 100vh;
-    background-color: #7c3e66;
+	height: 100vh;
+	background-color: #7c3e66;
+	color: #f2ebe9;
 }
 
 #contact {
-    height: 80vh;
-    background-color: #f2ebe9;
+	height: 80vh;
+	background-color: #f2ebe9;
 }
 
 #footer {
-    height: 7vh;
-    background-color: #7c3e66;
+	height: 7vh;
+	background-color: #7c3e66;
+	display: flex;
+	color: #f2ebe9;
 }
 
 /*APPLIED TO CLASSES*/
