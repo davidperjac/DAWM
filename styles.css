@@ -13,6 +13,12 @@
 	scroll-behavior: smooth;
 	margin: auto;
 	padding: 0;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-align: center;
 }
 
 *,
@@ -32,19 +38,18 @@ a {
 	text-decoration: none;
 }
 
-img {
-	border: 2px solid #efefef;
-	transition: top ease 0.5s;
-	border-radius: 50%;
-	position: relative;
-	object-fit: cover;
-	height: 300px;
-	width: 300px;
-	top: 0;
+img:hover {
+	top: -7px;
 }
 
-img:hover {
-	top: -10px;
+p {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+p span {
+	color: #f66b0e;
+	font-weight: 900;
 }
 
 /*IDS OF THE PAGE*/
@@ -52,35 +57,44 @@ img:hover {
 #navbar {
 	display: flex;
 	flex-direction: column;
-	width: 70px;
-	height: 200px;
+	justify-content: center;
+	align-items: center;
+	width: 55px;
+	height: 175px;
 	overflow: hidden;
 	background-color: #112b3c;
 	color: #efefef;
-	padding: 15px;
 	position: fixed;
 	border-radius: 0 15px 15px 0;
-	top: 30rem;
+	top: 35rem;
 	box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2);
+	z-index: 3;
 }
 
 #home {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	height: 50vh;
+	height: 70vh;
+	/* background-image: url('public/background.svg'); */
 	background-color: #112b3c;
+	background-image: url("data:image/svg+xml,%3Csvg width='40' height='1' viewBox='0 0 40 1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v1H0z' fill='%23f66b0e' fill-opacity='0.31' fill-rule='evenodd'/%3E%3C/svg%3E");
 	color: #efefef;
-	position: relative;
 }
 
 #about {
-	height: 100vh;
+	height: 140vh;
 	background-color: #efefef;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	justify-content: center;
+	padding-top: 3rem;
 }
 
 #projects {
-	height: 100vh;
+	height: 70vh;
 	background-color: #112b3c;
 	color: #efefef;
 }
@@ -97,7 +111,35 @@ img:hover {
 	color: #efefef;
 }
 
+#paper {
+	position: relative;
+	width: 85%;
+	top: -40px;
+	box-shadow: 5px 0 5px 2px rgba(0, 0, 0, 0.2),
+		-5px 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+
 /*APPLIED TO CLASSES*/
+
+.foto-developer {
+	height: 30rem;
+	width: 30rem;
+}
+
+.foto-david {
+	border: 2px solid #efefef;
+	transition: top ease-in-out 0.3s;
+	border-radius: 50%;
+	position: relative;
+	object-fit: cover;
+	height: 18rem;
+	width: 18rem;
+	top: 0;
+}
+
+.description {
+	width: 60%;
+}
 
 .user,
 .laptop,
@@ -142,6 +184,13 @@ img:hover {
 
 	#home {
 		height: 70vh;
+		border: 2px solid red;
+	}
+
+	img {
+		width: 15rem;
+		height: 15rem;
+		border: 2px solid red;
 	}
 }
 
@@ -150,13 +199,14 @@ img:hover {
 button {
 	--button_radius: 0.75em;
 	--button_color: #e8e8e8;
-	--button_outline_color: #000000;
+	--button_outline_color: #112b3c;
 	font-size: 17px;
 	font-weight: bold;
 	border: none;
 	border-radius: var(--button_radius);
 	background: var(--button_outline_color);
 	cursor: pointer;
+	margin-bottom: 3rem;
 }
 
 .button_top {

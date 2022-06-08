@@ -15,15 +15,12 @@
 	</head>
 	<body>
 		<div id="navbar">
-			<a href="#home">
-				<h1>DP</h1>
-			</a>
 			<a href="#about">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="user"
-					width="44"
-					height="44"
+					width="40"
+					height="40"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="white"
@@ -39,8 +36,8 @@
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="laptop"
-					width="44"
-					height="44"
+					width="40"
+					height="40"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="white"
@@ -56,8 +53,8 @@
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="mail"
-					width="44"
-					height="44"
+					width="40"
+					height="40"
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="white"
@@ -73,43 +70,72 @@
 			</a>
 		</div>
 		<div id="home">
-			<div class="home-info">
-				<img src="/public/david-foto.JPG" alt="foto-david" />
+			<img
+				src="/public/david-foto.JPG"
+				alt="foto-david"
+				draggable="false"
+				class="foto-david"
+			/>
+			<div>
 				<h1>David Perez</h1>
 				<h2>Software Developer</h2>
-				<a href="#contact">
-					<button>
-						<span class="button_top">Hire me!</span>
-					</button>
-				</a>
 			</div>
+			<a href="#contact">
+				<button>
+					<span class="button_top">Hire me!</span>
+				</button>
+			</a>
 		</div>
-		<div id="about">
-			<div class="description">
+		<div id="paper">
+			<div id="about">
 				<h1>About Me</h1>
+				<div class="description">
+					<p>
+						I'm David Perez from <span>Guayaquil, Ecuador</span>. I'm a
+						passionate Computer Science Student in ESPOL. Currently interested
+						in <span>Web Technologies and Design</span>. I have a wide skillset
+						of technologies I put on action everyday. Big fan of classics as
+						<span> Java, Python and Javascript</span>.
+					</p>
+					<img
+						src="public/developer.svg"
+						alt="developer"
+						class="foto-developer"
+					/>
+				</div>
+				<div class="skillset">
+					<h1>Skillset</h1>
+					<ul>
+						<li>Python</li>
+						<li>Java</li>
+						<li>Javascript</li>
+						<li>React</li>
+						<li>Redux</li>
+						<li>Firebase</li>
+					</ul>
+				</div>
+				<div class="languages">
+					<h1>Languages</h1>
+				</div>
 			</div>
-			<div class="skillset">
-				<h2>Skillset</h2>
+			<div id="projects">
+				<h1>Projects</h1>
+				<h3>Here are a few projects I've working on recently</h3>
+				<div class="projects-list">
+					<ul></ul>
+				</div>
 			</div>
-			<div class="languages">
-				<h2>Languages</h2>
+			<div id="contact">
+				<h1>Contact Me</h1>
+				<h2>Let's get in touch!</h2>
 			</div>
 		</div>
-		<div id="projects">
-			<h1>Projects</h1>
-			<h3>Here are a few projects I've working on recently</h3>
-			<div class="projects-list">
-				<ul></ul>
-			</div>
-		</div>
-		<div id="contact">
-			<h1>Contact Me</h1>
-		</div>
+
 		<div id="footer">
 			<a href="#home">
 				<h1>DP</h1>
 			</a>
-			<p>©Copyright 2021.All rights reserved</p>
+			<p>©Copyright 2022.All rights reserved</p>
 			<div class="icons">
 				<a href="https://github.com/davidperjac">
 					<svg
