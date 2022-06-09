@@ -63,6 +63,7 @@ textarea {
 	border-radius: 2px;
 	outline-color: #f66b0e;
 	padding: 0.5rem;
+	resize: none;
 }
 
 body {
@@ -86,6 +87,7 @@ body {
 	position: sticky;
 	box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2);
 	z-index: 3;
+	gap: 1rem;
 }
 
 #home {
@@ -118,14 +120,15 @@ body {
 	padding-bottom: 3rem;
 	justify-content: center;
 	align-items: center;
+	gap: 2rem;
 }
 
 #contact {
-	height: 90vh;
+	height: 110vh;
 	background-color: #efefef;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -155,13 +158,18 @@ body {
 	align-self: center;
 	position: relative;
 	width: 85%;
-	top: -40px;
+
 	margin-bottom: 5rem;
 	box-shadow: 5px 0 5px 2px rgba(0, 0, 0, 0.2),
 		-5px 0 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 /*APPLIED TO CLASSES*/
+
+.map {
+	width: 450px;
+	height: 450px;
+}
 
 .socials,
 .location {
@@ -178,8 +186,8 @@ body {
 .contact-form {
 	border: 2px solid #112b3c;
 	border-radius: 5px;
-	height: 55vh;
-	width: 50vh;
+	height: 25rem;
+	width: 25rem;
 	box-shadow: 5px 5px 0 2px rgba(0, 0, 0);
 }
 
@@ -224,15 +232,22 @@ body {
 	width: 18rem;
 	height: 35rem;
 	object-fit: cover;
+	transition: all 10s ease;
+}
+
+.project:hover,
+.photo:hover {
+	transform: translateY(-100%);
 }
 
 .project {
 	width: 18rem;
 	height: 18rem;
-	border-radius: 15px;
-	transition: all ease 0.5s;
+	border: 2px solid rgb(243, 242, 242);
+	border-radius: 20px;
+	transition: all ease 0.2s;
 	margin-top: 1rem;
-	overflow-y: hidden;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 }
@@ -338,21 +353,72 @@ body {
 /*MEDIA QUERIES*/
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) {
-	#navbar {
+@media only screen and (max-width: 600px) {
+	#about {
+		height: 210vh;
+	}
+
+	#projects {
+		height: 150vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#contact {
+		height: 150vh;
+	}
+
+	#info {
 		display: flex;
 		flex-direction: column;
 	}
 
-	#home {
-		height: 70vh;
-		border: 2px solid red;
+	h1 {
+		font-size: 2rem;
 	}
 
-	img {
-		width: 15rem;
+	h3 {
+		font-size: 1rem;
+	}
+
+	.foto-developer {
 		height: 15rem;
-		border: 2px solid red;
+		width: 15rem;
+	}
+
+	.map {
+		width: 250px;
+		height: 250px;
+	}
+
+	.contact-form {
+		width: 20rem;
+		height: 20rem;
+	}
+
+	.list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.skills {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	button {
+		--button_radius: 0.75em;
+		--button_color: #e8e8e8;
+		--button_outline_color: #112b3c;
+		font-size: 17px;
+		font-weight: bold;
+		border: none;
+		border-radius: var(--button_radius);
+		background: var(--button_outline_color);
+		cursor: pointer;
+		margin-top: 2rem;
 	}
 }
 
@@ -368,7 +434,7 @@ button {
 	border-radius: var(--button_radius);
 	background: var(--button_outline_color);
 	cursor: pointer;
-	margin: 1rem;
+	margin-top: 2rem;
 }
 
 .button_top {
@@ -400,7 +466,7 @@ button:active .button_top {
 	margin: 25px 0;
 	font-size: 0.9em;
 	font-family: sans-serif;
-	min-width: 400px;
+	width: 300px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
