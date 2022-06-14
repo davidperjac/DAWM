@@ -1,0 +1,15 @@
+/*NAVBAR CLASSES*/
+
+.user,
+.laptop,
+.mail {
+	fill: #efefef;
+}
+
+.user:hover,
+.laptop:hover,
+.mail:hover {
+	fill: #f66b0e;
+	transform: scale(1.1);
+	transition: linear 0.1s;
+}

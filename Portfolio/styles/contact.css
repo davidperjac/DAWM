@@ -1,0 +1,118 @@
+/*CONTACT CLASSES*/
+
+.map {
+	width: 20rem;
+	height: 15rem;
+}
+
+.contact-left {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	position: relative;
+	top: -2.5rem;
+}
+
+.contact-up {
+	display: flex;
+	justify-content: center;
+	gap: 3rem;
+}
+
+.contact-location,
+.contact-cellphone,
+.contact-email {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.contact-info {
+	background-color: #112b3c;
+	width: 20rem;
+	height: 16rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1rem;
+	color: #e8e8e8;
+	padding: 1rem;
+	font-size: 1.1rem;
+}
+
+.location-icon,
+.cell-icon,
+.mail-icon {
+	stroke: #e8e8e8;
+	transition: all ease 0.2s;
+}
+
+.location-icon:hover,
+.cell-icon:hover,
+.mail-icon:hover {
+	stroke: #f66b0e;
+}
+
+.form-group {
+	transition: all ease 0.3s;
+}
+
+.form-label {
+	font-size: 1.1rem;
+	color: #112b3c;
+	display: block;
+	opacity: 1;
+	transform: translateY(-2.5em);
+	transition: all ease 0.3s;
+	pointer-events: none;
+}
+
+.form-label-area {
+	font-size: 1.1rem;
+	color: #112b3c;
+	display: block;
+	opacity: 1;
+	transform: translateY(-11em);
+	transition: all ease 0.3s;
+	pointer-events: none;
+}
+
+.form-input {
+	font-weight: 800;
+	font-size: 18px;
+	background-color: transparent;
+	border: 2px solid #112b3c;
+	transition: all ease 0.5s;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 25rem;
+	box-sizing: border-box;
+	outline: 0;
+	resize: none;
+}
+
+.form-input::placeholder {
+	color: transparent;
+}
+
+.form-group:focus-within {
+	transform: scale(1.05, 1.05);
+}
+
+.form-input:focus {
+	border-color: #f66b0e;
+	outline: none;
+	box-shadow: none;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+	transform: translateY(-4.3em) scale(0.9);
+}
+
+.form-input:focus + .form-label-area,
+.form-input:not(:placeholder-shown) + .form-label-area {
+	transform: translateY(-12.8em) scale(0.9);
+}

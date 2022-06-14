@@ -1,0 +1,26 @@
+/*INFO CLASSES*/
+
+.github-icon,
+.linkedin-icon {
+	fill: #efefef;
+}
+
+.github-icon:hover,
+.linkedin-icon:hover {
+	fill: #f66b0e;
+	transform: scale(1.1);
+	transition: linear 0.1s;
+}
+
+.socials,
+.location,
+.support {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.location-text {
+	inline-size: 400px;
+	overflow-wrap: break-word;
+}

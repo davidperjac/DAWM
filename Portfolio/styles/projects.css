@@ -1,0 +1,66 @@
+/*PROJECTS CLASSES*/
+
+.list {
+	display: flex;
+	gap: 3rem;
+	flex-wrap: wrap;
+}
+
+.photo {
+	width: 18rem;
+	height: 35rem;
+	object-fit: cover;
+	transition: all 10s ease;
+}
+
+.project:hover,
+.photo:hover {
+	transform: translateY(-100%);
+}
+
+.project {
+	width: 18rem;
+	height: 18rem;
+	border: 2px solid rgb(243, 242, 242);
+	border-radius: 20px;
+	transition: all ease 0.2s;
+	margin-top: 1rem;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.project:hover {
+	transform: scale(1.05);
+}
+
+.browser {
+	height: 20px;
+	width: 18rem;
+	border-radius: 5px 5px 0px 0px;
+	display: flex;
+	align-items: center;
+	z-index: 1;
+	position: sticky;
+	background-color: #efefef;
+}
+
+.circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin: 3px;
+}
+
+.circle.left {
+	background-color: rgb(255, 59, 48);
+	margin-left: 0.5rem;
+}
+
+.circle.middle {
+	background-color: rgb(255, 204, 0);
+}
+
+.circle.right {
+	background-color: rgb(52, 199, 89);
+}

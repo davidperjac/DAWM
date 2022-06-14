@@ -1,0 +1,47 @@
+/*ABOUT CLASSES*/
+
+.education {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.foto-developer {
+	height: 30rem;
+	width: 30rem;
+}
+
+.description {
+	display: flex;
+	inline-size: 35rem;
+	overflow-wrap: break-word;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.skillset {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 4rem;
+}
+
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.skill {
+	fill: gray;
+	position: relative;
+	transition: all ease 0.2s;
+	top: 0px;
+}
+
+.skill:hover {
+	top: -7px;
+	fill: #f66b0e;
+}

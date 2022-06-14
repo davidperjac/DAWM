@@ -1,0 +1,26 @@
+/*HOME CLASSES*/
+
+.foto-david {
+	border: 10px solid #112b3c;
+	transition: top ease-in-out 0.3s;
+	border-radius: 50%;
+	position: relative;
+	object-fit: cover;
+	height: 18rem;
+	width: 18rem;
+	top: 0;
+}
+
+.foto-david:hover {
+	top: -7px;
+}
+
+.name {
+	margin-bottom: 2rem;
+}
+
+.home-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
