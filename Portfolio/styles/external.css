@@ -1,6 +1,35 @@
 /* From uiverse.io */
 
-button {
+.hire-me-btn:hover {
+	filter: brightness(110%);
+}
+
+.hire-me-btn:hover .front {
+	transform: translateY(-6px);
+	transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.hire-me-btn:active .front {
+	transform: translateY(-2px);
+	transition: transform 34ms;
+}
+
+.hire-me-btn:hover .shadow {
+	transform: translateY(4px);
+	transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.hire-me-btn:active .shadow {
+	transform: translateY(1px);
+	transition: transform 34ms;
+}
+
+.hire-me-btn:focus:not(:focus-visible) {
+	outline: none;
+}
+
+button,
+.hire-me-btn {
 	position: relative;
 	border: none;
 	background: transparent;
@@ -89,7 +118,7 @@ button:focus:not(:focus-visible) {
 	margin: 25px 0;
 	font-size: 0.9em;
 	font-family: sans-serif;
-	width: 300px;
+	width: 250px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 

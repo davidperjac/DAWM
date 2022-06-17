@@ -8,18 +8,18 @@
 	}
 
 	#about {
-		height: 230vh;
+		height: 235vh;
 	}
 
 	#projects {
-		height: 150vh;
+		height: 180vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
 	#contact {
-		height: 160vh;
+		height: 180vh;
 	}
 
 	#info {
@@ -86,12 +86,22 @@
 	.list {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	ul {
+		display: flex;
+		justify-content: center;
+		align-self: center;
 	}
 
 	.skills {
 		display: flex;
 		flex-wrap: wrap;
+		align-self: center;
 		justify-content: center;
+		align-items: center;
 	}
 
 	.up {
@@ -100,7 +110,7 @@
 	}
 
 	.form-input {
-		width: 20rem;
+		width: 18rem;
 	}
 
 	.form-input:focus + .form-label-area,
