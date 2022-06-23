@@ -1,10 +1,24 @@
 const ctx = document.getElementById('myChart').getContext('2d');
-
+const select = document.querySelector('select');
+const arregloInfo = document.getElementsByClassName('counter');
+const tableBody = document.querySelector('tbody');
 let myChart;
 
-let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, 'rgba(58,123,213,1)');
-gradient.addColorStop(1, 'rgba(0,210,255,0.3)');
+const tableTemplate = (index, movie) => {
+	return `<tr>
+							<td>${index}</td>
+							<td class="txt-oflo">${movie.title}</td>
+							<td>${movie.popularity}</td>
+							<td class="txt-oflo">${movie.release_date}</td>
+							<td><span class="text-success">${movie.vote_average}</span></td>
+						</tr>`;
+};
+
+const cleanTable = () => {
+	while (tableBody.hasChildNodes()) {
+		tableBody.removeChild(tableBody.firstChild);
+	}
+};
 
 const cargarDatos = (type) => {
 	if (myChart) {
@@ -18,12 +32,31 @@ const cargarDatos = (type) => {
 			const limitedMovies = res.slice(0, 10);
 			const scores = [];
 			const labels = [];
+			let totalPopularity = 0;
+			let totalVotes = 0;
+			let totalAverage = 0;
 			let delayed;
 
+			limitedMovies.sort((a, b) => {
+				return b.vote_average - a.vote_average;
+			});
+
+			cleanTable();
+
+			let index = 1;
 			for (let movie of limitedMovies) {
 				labels.push(movie.title);
 				scores.push(movie.popularity);
+				totalPopularity += movie.popularity;
+				totalVotes += movie.vote_count;
+				totalAverage += movie.vote_average / 10;
+				tableBody.innerHTML += tableTemplate(index, movie);
+				index++;
 			}
+
+			arregloInfo[0].textContent = totalPopularity.toFixed(2);
+			arregloInfo[1].textContent = totalVotes;
+			arregloInfo[2].textContent = totalAverage.toFixed(2);
 
 			const dataChart = {
 				labels,
@@ -32,7 +65,7 @@ const cargarDatos = (type) => {
 						data: scores,
 						label: 'Points',
 						fill: true,
-						backgroundColor: gradient,
+						backgroundColor: 'blue',
 					},
 				],
 			};
@@ -77,14 +110,10 @@ const cargarDatos = (type) => {
 
 /*EVENT LISTENERS*/
 
-const select = document.querySelector('select');
-
-const selectValue = select.value.toLowerCase().replace(' ', '_');
-
 window.addEventListener('DOMContentLoaded', (event) => {
-	cargarDatos(selectValue);
+	cargarDatos(select.value.toLowerCase().replace(' ', '_'));
 });
 
 select.addEventListener('change', (event) => {
-	cargarDatos(selectValue);
+	cargarDatos(select.value.toLowerCase().replace(' ', '_'));
 });
