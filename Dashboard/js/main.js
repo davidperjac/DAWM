@@ -1,28 +1,29 @@
 const ctx = document.getElementById('myChart').getContext('2d');
 
-const movies =
-	'https://api.themoviedb.org/3/movie/upcoming?api_key=15238df3fae4d5af0df0f3ac7790463b&language=en-US&page=1';
+let myChart;
 
-const cargarDatos = () => {
-	fetch(movies)
+let gradient = ctx.createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0, 'rgba(58,123,213,1)');
+gradient.addColorStop(1, 'rgba(0,210,255,0.3)');
+
+const cargarDatos = (type) => {
+	if (myChart) {
+		myChart.destroy();
+	}
+	const url = `https://api.themoviedb.org/3/movie/${type}?api_key=15238df3fae4d5af0df0f3ac7790463b&language=en-US&page=1`;
+	fetch(url)
 		.then((response) => response.text())
 		.then((data) => {
 			const res = JSON.parse(data).results;
-			const limitedMovies = res.slice(0, 20);
-			let delayed;
-			console.log(limitedMovies);
-
-			const labels = [];
+			const limitedMovies = res.slice(0, 10);
 			const scores = [];
+			const labels = [];
+			let delayed;
 
 			for (let movie of limitedMovies) {
 				labels.push(movie.title);
 				scores.push(movie.popularity);
 			}
-
-			let gradient = ctx.createLinearGradient(0, 0, 0, 400);
-			gradient.addColorStop(0, 'rgba(58,123,213,1)');
-			gradient.addColorStop(1, 'rgba(0,210,255,0.3)');
 
 			const dataChart = {
 				labels,
@@ -32,8 +33,6 @@ const cargarDatos = () => {
 						label: 'Points',
 						fill: true,
 						backgroundColor: gradient,
-						borderColor: '#fff',
-						pointBackgroundColor: 'gray',
 					},
 				],
 			};
@@ -51,7 +50,7 @@ const cargarDatos = () => {
 					hoverRadius: 8,
 					radius: 5,
 					hitRadius: 30,
-					responsive: true,
+					responsive: false,
 					animation: {
 						onComplete: () => {
 							delayed = true;
@@ -71,11 +70,21 @@ const cargarDatos = () => {
 				},
 			};
 
-			const myChart = new Chart(ctx, config);
+			myChart = new Chart(ctx, config);
 		})
 		.catch(console.error);
 };
 
+/*EVENT LISTENERS*/
+
+const select = document.querySelector('select');
+
+const selectValue = select.value.toLowerCase().replace(' ', '_');
+
 window.addEventListener('DOMContentLoaded', (event) => {
-	cargarDatos();
+	cargarDatos(selectValue);
+});
+
+select.addEventListener('change', (event) => {
+	cargarDatos(selectValue);
 });
