@@ -195,7 +195,32 @@ const fetchMovies = (type) => {
 				},
 			};
 
+			const configPie = {
+				type: 'doughnut',
+				data: dataPie,
+				options: {
+					hitRadius: 30,
+					responsive: false,
+					animation: {
+						onComplete: () => {
+							delayed = true;
+						},
+						delay: (context) => {
+							let delay = 0;
+							if (
+								context.type === 'data' &&
+								context.mode === 'default' &&
+								!delayed
+							) {
+								delay = context.dataIndex * 300 + context.datasetIndex * 100;
+							}
+							return delay;
+						},
+					},
+				},
+			};
 			barChart = new Chart(ctxBar, config);
+			pieChart = new Chart(ctxPie, configPie);
 		})
 		.catch(console.error);
 };
