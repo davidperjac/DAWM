@@ -7,9 +7,37 @@ const select = document.querySelector('select');
 const arregloInfo = document.getElementsByClassName('counter');
 const tableBody = document.querySelector('tbody');
 const posterViewer = document.getElementById('card-viewer');
+
 const moviePoster = 'http://image.tmdb.org/t/p/w500';
+
 let barChart;
 let pieChart;
+let delayed;
+
+const optionsChart = {
+	scales: {
+		y: {
+			suggestedMin: 0,
+			suggestedMax: 10,
+		},
+	},
+	hoverRadius: 8,
+	radius: 5,
+	hitRadius: 30,
+	responsive: false,
+	animation: {
+		onComplete: () => {
+			delayed = true;
+		},
+		delay: (context) => {
+			let delay = 0;
+			if (context.type === 'data' && context.mode === 'default' && !delayed) {
+				delay = context.dataIndex * 300 + context.datasetIndex * 100;
+			}
+			return delay;
+		},
+	},
+};
 
 /*TEMPLATES*/
 
@@ -65,8 +93,9 @@ const cleanPoster = () => {
 };
 
 const updateChart = () => {
-	if (barChart) {
+	if (barChart || pieChart) {
 		barChart.destroy();
+		pieChart.destroy();
 	}
 };
 
@@ -107,15 +136,15 @@ const fetchMovies = (type) => {
 		.then((data) => {
 			const res = JSON.parse(data).results;
 			const limitedMovies = res.slice(0, 10);
+
+			const popularity = [];
 			const scores = [];
 			const labels = [];
-			let totalPopularity = 0;
-			let totalVotes = 0;
-			let totalAverage = 0;
-			let index = 1;
-			let delayed;
 
-			console.log(limitedMovies);
+			let totalPopularity = 0;
+			let totalAverage = 0;
+			let totalVotes = 0;
+			let index = 1;
 
 			limitedMovies.sort((a, b) => {
 				return b.vote_average - a.vote_average;
@@ -123,7 +152,8 @@ const fetchMovies = (type) => {
 
 			for (let movie of limitedMovies) {
 				labels.push(movie.title);
-				scores.push(movie.popularity);
+				scores.push(movie.vote_average);
+				popularity.push(movie.popularity);
 				totalPopularity += movie.popularity;
 				totalVotes += movie.vote_count;
 				totalAverage += movie.vote_average / 10;
@@ -153,7 +183,7 @@ const fetchMovies = (type) => {
 				labels,
 				datasets: [
 					{
-						data: scores,
+						data: popularity,
 						label: 'Points',
 						backgroundColor: backgroundColorArray,
 						borderColor: borderColorArray,
@@ -162,37 +192,10 @@ const fetchMovies = (type) => {
 				],
 			};
 
-			const config = {
+			const barConfig = {
 				type: 'bar',
 				data: dataBar,
-				options: {
-					scales: {
-						y: {
-							suggestedMin: 0,
-							suggestedMax: 10,
-						},
-					},
-					hoverRadius: 8,
-					radius: 5,
-					hitRadius: 30,
-					responsive: false,
-					animation: {
-						onComplete: () => {
-							delayed = true;
-						},
-						delay: (context) => {
-							let delay = 0;
-							if (
-								context.type === 'data' &&
-								context.mode === 'default' &&
-								!delayed
-							) {
-								delay = context.dataIndex * 300 + context.datasetIndex * 100;
-							}
-							return delay;
-						},
-					},
-				},
+				options: optionsChart,
 			};
 
 			const configPie = {
@@ -219,7 +222,7 @@ const fetchMovies = (type) => {
 					},
 				},
 			};
-			barChart = new Chart(ctxBar, config);
+			barChart = new Chart(ctxBar, barConfig);
 			pieChart = new Chart(ctxPie, configPie);
 		})
 		.catch(console.error);
