@@ -55,7 +55,6 @@ const tableTemplate = (index, movie) => {
 const posterTemplate = (movie) => {
 	return `
 		<div class="row p-5">
-			<h3 class="box-title">Poster Viewer</h3>
 			<div class="p-2">
 				<img
 					src= ${moviePoster}${movie.poster_path}
