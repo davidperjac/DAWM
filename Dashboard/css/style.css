@@ -1,6 +1,25 @@
 @media only screen and (max-width: 300px) {
 	canvas {
-		width: 40rem;
-		height: 20rem;
+		width: 250px;
+		height: 250px;
 	}
+	#barChart {
+		width: 400px;
+		height: 400px;
+	}
+
+	#pieChart {
+		width: 400px;
+		height: 400px;
+	}
+}
+
+#barChart {
+	width: 500px;
+	height: 1500px;
+}
+
+#pieChart {
+	width: 500px;
+	height: 500px;
 }

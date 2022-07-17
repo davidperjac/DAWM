@@ -24,7 +24,8 @@ const optionsChart = {
 	hoverRadius: 8,
 	radius: 5,
 	hitRadius: 30,
-	responsive: false,
+	responsive: true,
+	maintainAspectRatio: true,
 	animation: {
 		onComplete: () => {
 			delayed = true;
@@ -43,7 +44,7 @@ const optionsChart = {
 
 const tableTemplate = (index, movie) => {
 	return `<tr>
-							<td>${index}</td>
+							<th scope="row">${index}</th>
 							<td class="txt-oflo">${movie.title}</td>
 							<td>${movie.original_language}</td>
 							<td class="txt-oflo">${movie.release_date}</td>
@@ -54,6 +55,7 @@ const tableTemplate = (index, movie) => {
 const posterTemplate = (movie) => {
 	return `
 		<div class="row p-5">
+			<h3 class="box-title">Poster Viewer</h3>
 			<div class="p-2">
 				<img
 					src= ${moviePoster}${movie.poster_path}
@@ -198,12 +200,13 @@ const fetchMovies = (type) => {
 				options: optionsChart,
 			};
 
-			const configPie = {
+			const pieConfig = {
 				type: 'doughnut',
 				data: dataPie,
 				options: {
 					hitRadius: 30,
-					responsive: false,
+					responsive: true,
+					maintainAspectRatio: true,
 					animation: {
 						onComplete: () => {
 							delayed = true;
@@ -223,7 +226,7 @@ const fetchMovies = (type) => {
 				},
 			};
 			barChart = new Chart(ctxBar, barConfig);
-			pieChart = new Chart(ctxPie, configPie);
+			pieChart = new Chart(ctxPie, pieConfig);
 		})
 		.catch(console.error);
 };

@@ -13,16 +13,16 @@
 			sizes="16x16"
 			href="plugins/images/film.png"
 		/>
-		<!-- <link href="css/style.min.css" rel="stylesheet" /> -->
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
 			crossorigin="anonymous"
 		/>
+		<link href="./css/style.css" rel="stylesheet" />
 	</head>
 	<body>
-		<nav class="navbar navbar-dark bg-dark">
+		<nav class="navbar navbar-dark bg-dark p-3">
 			<div class="container-fluid justify-content-end px-3 gap-2">
 				<img
 					src="plugins/images/users/allan.png"
@@ -64,39 +64,38 @@
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="row row-cols-2"> 
-					<div class="col">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm">
 						<h3 class="box-title p-5">Scores Bar Chart</h3>
-						<canvas class="me-5" id="barChart" width="500" height="500"></canvas>
+						<canvas class="me-5" id="barChart"></canvas>
 					</div>
-					<div class="col">
+					<div class="col-sm">
 						<h3 class="box-title p-5">Popularity Pie Chart</h3>
-						<canvas class="me-5" id="pieChart" width="500" height="500"></canvas>
+						<canvas class="me-5" id="pieChart"></canvas>
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-center p-5">
+			<div class="row justify-content-center mt-5">
 				<h3 class="box-title p-5">TOP 10</h3>
-				<table class="table no-wrap">
-					<thead>
+				<table class="table table-dark table-striped table-responsive"">
+					<thead class="thead-dark">
 						<tr>
-							<th class="border-top-0">#</th>
-							<th class="border-top-0">Title</th>
-							<th class="border-top-0">Language</th>
-							<th class="border-top-0">Date</th>
-							<th class="border-top-0">Score</th>
+							<th scope="col">#</th>
+							<th scope="col">Title</th>
+							<th scope="col">Language</th>
+							<th scope="col">Date</th>
+							<th scope="col">Score</th>
 						</tr>
 					</thead>
 					<tbody></tbody>
 				</table>
 			</div>
-			<div class="row justify-content-center p-5">
+			<div class="row justify-content-center mt-5">
 				<div class="col-md-12 col-lg-8 col-sm-12">
 					<div id="card-viewer" class="card">
 						<div class="card-body">
-							<h3 class="box-title mb-0">Poster Viewer</h3>
-						</div>
+							<h3 class="box-title">Poster Viewer</h3>
 						</div>
 					</div>
 				</div>
