@@ -7,3 +7,4 @@
 
 1. <a href="https://github.com/davidperjac/DAWM/tree/master/Portfolio">Portfolio with HTML and CSS</a>
 2. <a href="https://github.com/davidperjac/DAWM/tree/master/Dashboard">Dashboard</a>
+3. <a href="https://github.com/davidperjac/DAWM/tree/master/TaskManager">Task Manager</a>
