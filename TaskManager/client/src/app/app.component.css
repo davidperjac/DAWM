@@ -1,0 +1,15 @@
+.container {
+  background: rgb(35, 25, 85);
+  background: linear-gradient(
+    180deg,
+    rgba(35, 25, 85, 1) 0%,
+    rgba(31, 70, 144, 1) 100%
+  );
+  color: #e8aa42;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

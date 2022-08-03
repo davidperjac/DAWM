@@ -1,0 +1,15 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mat-signIn {
+  background-color: #e8aa42;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
