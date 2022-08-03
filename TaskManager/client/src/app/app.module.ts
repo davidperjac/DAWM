@@ -13,7 +13,10 @@ import { BoardsComponent } from './pages/boards/boards.component';
 import { TaskComponent } from './pages/task/task.component';
 import { CreateTaskComponent } from './pages/create-task/create-task.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
