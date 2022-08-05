@@ -9,12 +9,7 @@ h1 {
   color: black;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 1.5rem;
-}
+
 
 .signup-container {
   display: flex;

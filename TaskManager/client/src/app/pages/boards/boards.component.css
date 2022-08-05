@@ -1,0 +1,21 @@
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100% !important;
+}
+.example-card {
+  min-width: 15rem;
+  /* margin: 40px; */
+  margin: 1rem;
+}
+
+.cards {
+  display: flex;
+  gap: 3rem;
+}
+
+.mat-toolbar {
+  background-color: #e8aa42;
+}
