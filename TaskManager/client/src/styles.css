@@ -13,9 +13,9 @@ body {
     rgba(35, 25, 85, 1) 0%,
     rgba(31, 70, 144, 1) 100%
   );
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 
 form {

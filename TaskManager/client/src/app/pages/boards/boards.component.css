@@ -7,7 +7,6 @@
 }
 .example-card {
   min-width: 15rem;
-  /* margin: 40px; */
   margin: 1rem;
 }
 
@@ -16,6 +15,19 @@
   gap: 3rem;
 }
 
-.mat-toolbar {
+.mat-toolbar,
+.mat-add-btn {
   background-color: #e8aa42;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
 }
