@@ -4,6 +4,8 @@
   left: 0;
   z-index: 2;
   width: 100% !important;
+  display: flex;
+  justify-content: space-around;
 }
 .example-card {
   min-width: 15rem;
@@ -15,8 +17,7 @@
   gap: 3rem;
 }
 
-.mat-toolbar,
-.mat-add-btn {
+.mat-toolbar {
   background-color: #e8aa42;
 }
 
@@ -26,8 +27,6 @@
   gap: 1rem;
 }
 
-.example-button-container {
-  display: flex;
-  justify-content: center;
-  width: 120px;
+.add-btn {
+  margin-left: 2rem;
 }

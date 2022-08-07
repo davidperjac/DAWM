@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { CreateBoardComponent } from './pages/create-board/create-board.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
     BoardsComponent,
     TaskComponent,
     CreateTaskComponent,
+    CreateBoardComponent,
   ],
   imports: [
     BrowserModule,

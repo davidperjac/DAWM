@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Board } from 'src/app/models/board';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -7,6 +8,8 @@ import { Board } from 'src/app/models/board';
   styleUrls: ['./boards.component.css'],
 })
 export class BoardsComponent implements OnInit {
+  public url: string = '';
+
   boards: Board[] = [
     {
       id: 'board1',
@@ -34,7 +37,11 @@ export class BoardsComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.url = params['userId'];
+    });
+  }
 }

@@ -7,6 +7,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { TaskComponent } from './pages/task/task.component';
 import { CreateTaskComponent } from './pages/create-task/create-task.component';
+import { CreateBoardComponent } from './pages/create-board/create-board.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,15 +20,19 @@ const routes: Routes = [
     component: SignupComponent,
   },
   {
-    path: 'boards/:boardId',
+    path: 'boards/:userId',
     component: BoardsComponent,
+  },
+  {
+    path: 'create-board/:userId',
+    component: CreateBoardComponent,
   },
   {
     path: 'task/:taskId',
     component: TaskComponent,
   },
   {
-    path: 'create-task',
+    path: 'create-task/:userId',
     component: CreateTaskComponent,
   },
   { path: '**', redirectTo: '' },
