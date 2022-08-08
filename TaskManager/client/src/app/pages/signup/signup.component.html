@@ -1,6 +1,6 @@
 <div class="signup-container">
   <h1 routerLink="/">TASKIN</h1>
-  <form class="example-form">
+  <form class="auth-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email</mat-label>
       <input
@@ -22,6 +22,13 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput [formControl]="usernameFormControl" />
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
       <input type="password" matInput [formControl]="passwordFormControl" />
       <mat-error *ngIf="passwordFormControl.hasError('required')">
@@ -39,7 +46,7 @@
         Confirm Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="signIn">SIGN UP</button>
+    <button mat-raised-button color="signUp">SIGN UP</button>
   </form>
   <button mat-button routerLink="/login">
     <h3 routerLink="/login">Already have an account? Log In</h3>

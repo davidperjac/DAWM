@@ -7,10 +7,14 @@
 }
 
 .mat-signIn {
-  background-color: #e8aa42;
+  background-color: #00adb5;
 }
 
 h1 {
   font-size: 4rem;
   font-weight: 500;
+}
+
+h3 {
+  color: #eeeeee;
 }

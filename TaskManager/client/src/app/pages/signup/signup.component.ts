@@ -11,9 +11,10 @@ export class SignupComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-
+  usernameFormControl = new FormControl('', [Validators.required]);
   passwordFormControl = new FormControl('', [Validators.required]);
   confirmpasswordFormControl = new FormControl('', [Validators.required]);
+
   constructor() {}
 
   ngOnInit(): void {}

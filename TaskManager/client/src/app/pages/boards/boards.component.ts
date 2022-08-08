@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./boards.component.css'],
 })
 export class BoardsComponent implements OnInit {
-  public url: string = '';
+  public userId: string = '';
 
   boards: Board[] = [
     {
@@ -41,7 +41,7 @@ export class BoardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.url = params['userId'];
+      this.userId = params['userId'];
     });
   }
 }

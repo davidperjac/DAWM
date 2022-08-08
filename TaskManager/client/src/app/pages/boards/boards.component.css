@@ -6,27 +6,36 @@
   width: 100% !important;
   display: flex;
   justify-content: space-around;
+  background-color: #00adb5;
+  box-shadow: 0 5px 5px #222831;
 }
+
+.mat-edit {
+  color: #00adb5;
+}
+
 .example-card {
   min-width: 15rem;
   margin: 1rem;
+  transition: 0.2s ease;
+  cursor: pointer;
 }
+
+.example-card:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+/* .example-card:active {
+  transform: scale(0.9);
+} */
 
 .cards {
   display: flex;
   gap: 3rem;
 }
 
-.mat-toolbar {
-  background-color: #e8aa42;
-}
-
 .card-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-}
-
-.add-btn {
-  margin-left: 2rem;
 }

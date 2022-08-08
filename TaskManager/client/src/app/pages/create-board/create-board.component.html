@@ -1,14 +1,31 @@
-<h1>CREATE BOARD</h1>
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Title</mat-label>
-    <input type="text" matInput />
-  </mat-form-field>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Description</mat-label>
-    <input type="text" matInput />
-  </mat-form-field>
-  <button mat-raised-button class="add-btn" routerLink="/boards/{{ url }}">
-    ADD
+<mat-toolbar class="toolbar">
+  <button mat-icon-button class="back-btn" routerLink="/boards/{{ userId }}">
+    <mat-icon>arrow_back</mat-icon>
   </button>
-</form>
+  <div class="left">
+    <span> {{ userId }} Boards</span>
+    <span class="example-spacer"></span>
+  </div>
+  <div class="right">
+    <button mat-icon-button class="delete">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="create-board-container">
+  <h1>CREATE BOARD</h1>
+  <form class="board-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <input type="text" matInput />
+    </mat-form-field>
+    <button mat-raised-button class="add-btn" routerLink="/boards/{{ userId }}">
+      ADD
+    </button>
+  </form>
+</div>

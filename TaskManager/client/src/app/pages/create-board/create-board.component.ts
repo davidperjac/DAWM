@@ -7,13 +7,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-board.component.css'],
 })
 export class CreateBoardComponent implements OnInit {
-  public url: string = '';
+  public userId: string = '';
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.url = params['userId'];
+      this.userId = params['userId'];
     });
   }
 }

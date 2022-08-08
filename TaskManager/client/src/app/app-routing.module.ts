@@ -6,7 +6,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { TaskComponent } from './pages/task/task.component';
-import { CreateTaskComponent } from './pages/create-task/create-task.component';
 import { CreateBoardComponent } from './pages/create-board/create-board.component';
 
 const routes: Routes = [
@@ -28,13 +27,10 @@ const routes: Routes = [
     component: CreateBoardComponent,
   },
   {
-    path: 'task/:taskId',
+    path: 'tasks/:userId/:boardId',
     component: TaskComponent,
   },
-  {
-    path: 'create-task/:userId',
-    component: CreateTaskComponent,
-  },
+
   { path: '**', redirectTo: '' },
 ];
 

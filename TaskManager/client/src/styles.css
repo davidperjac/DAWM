@@ -5,22 +5,20 @@ body {
   height: 100%;
   width: 100%;
 }
+
 body {
   margin: 0;
-  background: rgb(35, 25, 85);
-  background: linear-gradient(
-    180deg,
-    rgba(35, 25, 85, 1) 0%,
-    rgba(31, 70, 144, 1) 100%
-  );
+  background-color: #222831;
+  color: #00adb5;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-form {
+.auth-form,
+.board-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 1.5rem;
+  gap: 1rem;
 }

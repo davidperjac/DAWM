@@ -1,1 +1,86 @@
-<p>task works!</p>
+<mat-toolbar class="toolbar">
+  <button mat-icon-button class="back-btn" routerLink="/boards/{{ userId }}">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div class="left">
+    <span> {{ boardId }} Tasks</span>
+    <span class="example-spacer"></span>
+  </div>
+  <div class="right">
+    <button mat-icon-button class="delete">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button class="delete">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="tasks-container">
+  <h1>What's the plan for today?</h1>
+  <form class="task-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Task</mat-label>
+      <input matInput placeholder="Ex. Pizza" value="Homework" />
+    </mat-form-field>
+    <button mat-fab class="add-btn" type="submit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
+
+  <div class="tasks-list" [formGroup]="tasks">
+    <div class="card">
+      <h3 class="task">
+        <mat-checkbox formControlName="match">View match</mat-checkbox>
+        <button mat-icon-button class="delete">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </h3>
+    </div>
+    <div class="card">
+      <h3 class="task">
+        <mat-checkbox formControlName="groceries">Do groceries</mat-checkbox>
+        <button mat-icon-button class="delete">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </h3>
+    </div>
+    <div class="card">
+      <h3 class="task">
+        <mat-checkbox formControlName="flight">Take the flight</mat-checkbox>
+        <button mat-icon-button class="delete">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </h3>
+    </div>
+  </div>
+
+  <!-- <mat-card>
+    <mat-card-content>
+      <section class="example-section" [formGroup]="tasks">
+        <h3 class="task">
+          <mat-checkbox formControlName="pepperoni">View match</mat-checkbox>
+          <button mat-icon-button class="delete">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </h3>
+        <h3 class="task">
+          <mat-checkbox formControlName="extracheese"
+            >Do groceries</mat-checkbox
+          >
+          <button mat-icon-button class="delete">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </h3>
+        <h3 class="task">
+          <mat-checkbox formControlName="mushroom"
+            >Take the flight</mat-checkbox
+          >
+          <button mat-icon-button class="delete">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </h3>
+      </section>
+    </mat-card-content>
+  </mat-card> -->
+</div>
