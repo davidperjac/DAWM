@@ -32,6 +32,13 @@
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+  background-color: #222831;
+  background-image: none;
+  padding: 3rem;
+  border-radius: 2rem;
+  transition: 0.1s ease;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 h1 {

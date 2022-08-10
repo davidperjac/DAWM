@@ -40,4 +40,6 @@
 .mat-card-actions {
   display: flex;
   justify-content: center;
+  background-color: #eeeeee;
+  border-radius: 0.3rem;
 }

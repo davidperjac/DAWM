@@ -3,8 +3,7 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
   <div class="left">
-    <span> {{ userId }} Boards</span>
-    <span class="example-spacer"></span>
+    <span class="example-spacer">Create a Board</span>
   </div>
   <div class="right">
     <button mat-icon-button class="delete">
@@ -14,7 +13,7 @@
 </mat-toolbar>
 
 <div class="create-board-container">
-  <h1>CREATE BOARD</h1>
+  <h1 class="create-title">What's up {{ userId }}</h1>
   <form class="board-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Title</mat-label>
