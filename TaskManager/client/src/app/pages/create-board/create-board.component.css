@@ -2,9 +2,14 @@
   background-color: #00adb5;
 }
 
-h1 {
+.create-title {
   font-weight: 700;
   color: #eeeeee;
+}
+
+.welcome-title {
+  color: #00adb5;
+  font-weight: 700;
 }
 
 .create-board-container {
