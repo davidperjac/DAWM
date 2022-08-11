@@ -3,11 +3,16 @@ h1 {
   font-weight: 500;
 }
 
+.logo {
+  cursor: pointer;
+}
+
 .login-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 10rem;
+  width: 20rem;
   background-color: #222831;
   background-image: none;
   gap: 2rem;

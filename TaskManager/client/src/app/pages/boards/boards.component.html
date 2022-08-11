@@ -1,46 +1,48 @@
-<mat-toolbar class="toolbar">
-  <button mat-icon-button class="logout-btn" routerLink="/login">
-    <mat-icon>logout</mat-icon>
-  </button>
-  <div class="left">
-    <span> {{ userId }} Boards</span>
-    <span class="example-spacer"></span>
-  </div>
-  <div class="right">
-    <button
-      mat-icon-button
-      class="add-btn"
-      routerLink="/create-board/{{ userId }}"
-    >
-      <mat-icon>add</mat-icon>
+<div class="boards-container">
+  <mat-toolbar class="toolbar" autosize>
+    <button mat-icon-button class="logout-btn" routerLink="/login">
+      <mat-icon>logout</mat-icon>
     </button>
-  </div>
-</mat-toolbar>
+    <div class="left">
+      <span> {{ userId }} Boards</span>
+      <span class="example-spacer"></span>
+    </div>
+    <div class="right">
+      <button
+        mat-icon-button
+        class="add-btn"
+        routerLink="/create-board/{{ userId }}"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
 
-<div class="cards">
-  <h1 *ngIf="boards.length == 0">NO BOARDS</h1>
-  <mat-card
-    class="card"
-    *ngFor="let board of boards"
-    matBadge="{{ board.completed }}"
-    matBadgePosition="after"
-    matBadgeSize="large"
-    matBadgeColor="warn"
-  >
-    <mat-card-title routerLink="/tasks/{{ userId }}/{{ board.name }}">{{
-      board.name
-    }}</mat-card-title>
-    <mat-card-subtitle>{{ board.id }}</mat-card-subtitle>
-    <mat-card-content>
-      <p>{{ board.description }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>
-        <mat-icon color="warn">delete</mat-icon>
-      </button>
-      <button mat-button>
-        <mat-icon color="edit">edit</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="cards">
+    <h1 *ngIf="boards.length == 0">NO BOARDS</h1>
+    <mat-card
+      class="card"
+      *ngFor="let board of boards"
+      matBadge="{{ board.completed }}"
+      matBadgePosition="after"
+      matBadgeSize="large"
+      matBadgeColor="warn"
+    >
+      <mat-card-title routerLink="/tasks/{{ userId }}/{{ board.name }}">{{
+        board.name
+      }}</mat-card-title>
+      <mat-card-subtitle>{{ board.id }}</mat-card-subtitle>
+      <mat-card-content>
+        <p>{{ board.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon color="edit">edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

@@ -1,12 +1,17 @@
 .mat-toolbar {
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
   z-index: 2;
-  width: 100% !important;
   display: flex;
   justify-content: space-around;
   background-color: #00adb5;
+}
+
+.boards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mat-edit {
@@ -30,6 +35,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 10rem;
 }
 
 .mat-badge-content {
@@ -40,6 +46,13 @@
 .mat-card-actions {
   display: flex;
   justify-content: center;
-  background-color: #eeeeee;
-  border-radius: 0.3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .cards {
+    margin-top: 7rem;
+  }
+  .mat-add-btn {
+    border: 2px solid red;
+  }
 }
