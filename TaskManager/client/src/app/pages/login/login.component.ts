@@ -8,24 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  email: String = 'allan@espol.edu.ec';
-  username: String = 'Allan';
-  password: String = 'dawm';
-
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
+  usernameFormControl = new FormControl('', [Validators.required]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
   onSubmit() {
-    if (
-      this.emailFormControl.value === this.email &&
-      this.passwordFormControl.value === this.password
-    ) {
-      this.route.navigate([`/boards/${this.username}`]);
-    }
+    this.route.navigate([`/boards/Allan`]);
   }
 
   constructor(private route: Router) {}

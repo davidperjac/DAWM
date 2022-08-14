@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
 	return sequelize.define(
 		'Users',
@@ -14,13 +14,8 @@ module.exports = function (sequelize, DataTypes) {
 				allowNull: false,
 				unique: 'username_UNIQUE',
 			},
-			email: {
-				type: DataTypes.STRING(45),
-				allowNull: false,
-				unique: 'email_UNIQUE',
-			},
 			password: {
-				type: DataTypes.STRING(45),
+				type: DataTypes.STRING(100),
 				allowNull: false,
 			},
 		},
@@ -46,12 +41,6 @@ module.exports = function (sequelize, DataTypes) {
 					unique: true,
 					using: 'BTREE',
 					fields: [{ name: 'username' }],
-				},
-				{
-					name: 'email_UNIQUE',
-					unique: true,
-					using: 'BTREE',
-					fields: [{ name: 'email' }],
 				},
 			],
 		}

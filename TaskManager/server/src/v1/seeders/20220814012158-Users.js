@@ -17,7 +17,6 @@ module.exports = {
 		// 		{
 		// 			userId: 1,
 		// 			username: 'davidperjac',
-		// 			email: 'davidperjac@hotmail.com',
 		// 			password: '123',
 		// 		},
 		// 	],
