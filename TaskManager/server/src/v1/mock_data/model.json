@@ -1,0 +1,38 @@
+{
+	"model": {
+		"type": "Object",
+		"value": {
+			"id": {
+				"type": "incrementNumber",
+				"options": {
+					"from": 1
+				}
+			},
+			"name": {
+				"type": "randomElementInArray",
+				"value": ["Code", "Work", "Home"]
+			},
+			"userId": {
+				"type": "randomElementInArray",
+				"value": [
+					"6ebc4647-aa7e-44a7-bb92-d2f9116ca25f",
+					"4d7aef0b-dce2-48f5-a390-2c0b6c02460c",
+					"03e27937-d6b8-49b6-a11b-b6a6c9c7bcdf"
+				]
+			},
+			"isCompleted": {
+				"type": "randomElementInArray",
+				"value": [true, false]
+			},
+			"updatedAt": {
+				"type": "faker",
+				"value": "date.recent"
+			},
+			"createdAt": {
+				"type": "faker",
+				"value": "date.between",
+				"options": ["2022-08-10", "2022-08-13"]
+			}
+		}
+	}
+}
