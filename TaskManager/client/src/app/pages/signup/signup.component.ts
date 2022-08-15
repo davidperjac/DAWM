@@ -40,10 +40,14 @@ export class SignupComponent implements OnInit {
         this.registerForm.get('username').value,
         this.registerForm.get('password').value
       )
-      .subscribe((res) => {
-        this.route.navigate(['/login']);
-        this.toastr.info('User created successfully');
-        // console.log(res);
+      .subscribe({
+        error: (res) => {
+          this.toastr.error(res.error);
+        },
+        next: (res) => {
+          this.route.navigate(['/login']);
+          this.toastr.info('User created successfully');
+        },
       });
   }
 

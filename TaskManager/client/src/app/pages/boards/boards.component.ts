@@ -1,6 +1,8 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Board } from 'src/app/models/board';
 import { ActivatedRoute } from '@angular/router';
+import { Board } from 'src/app/models/board';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-boards',
@@ -9,6 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BoardsComponent implements OnInit {
   public userId: string = '';
+  public user: User = {
+    userId: '',
+    username: '',
+    password: '',
+  };
 
   boards: Board[] = [
     {
@@ -37,11 +44,21 @@ export class BoardsComponent implements OnInit {
     },
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
+
+  logout() {
+    localStorage.removeItem('token');
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userId = params['userId'];
+    });
+    this.authService.getUser(this.userId).subscribe((res: any) => {
+      this.user = res[0] as User;
     });
   }
 }

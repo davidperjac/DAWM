@@ -1,10 +1,15 @@
 <div class="boards-container">
   <mat-toolbar class="toolbar" autosize>
-    <button mat-icon-button class="logout-btn" routerLink="/login">
+    <button
+      mat-icon-button
+      class="logout-btn"
+      routerLink="/login"
+      (click)="logout()"
+    >
       <mat-icon>logout</mat-icon>
     </button>
     <div class="left">
-      <span> {{ userId }} Boards</span>
+      <span> {{ user.username }} Boards</span>
       <span class="example-spacer"></span>
     </div>
     <div class="right">

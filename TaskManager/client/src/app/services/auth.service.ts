@@ -13,27 +13,20 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(username: string, password: string) {
-    return this.http
-      .post(this.URL + '/register', {
-        username: username,
-        password: password,
-      })
-      .pipe(catchError(this.handleError));
+    return this.http.post(this.URL + '/register', {
+      username: username,
+      password: password,
+    });
   }
 
-  login() {}
-
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(() => {
-      return errorMessage;
+  login(username: string, password: string) {
+    return this.http.post(this.URL + '/login', {
+      username: username,
+      password: password,
     });
+  }
+
+  getUser(id: string) {
+    return this.http.get(this.URL + `/${id}`);
   }
 }

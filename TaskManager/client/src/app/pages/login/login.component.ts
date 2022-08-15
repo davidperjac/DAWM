@@ -1,5 +1,7 @@
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +10,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  usernameFormControl = new FormControl('', [Validators.required]);
-  passwordFormControl = new FormControl('', [Validators.required]);
+  loginForm: FormGroup | any;
 
-  onSubmit() {
-    this.route.navigate([`/boards/Allan`]);
+  constructor(
+    private route: Router,
+    private authService: AuthService,
+    private toastr: ToastrService
+  ) {
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
   }
 
-  constructor(private route: Router) {}
+  login() {
+    this.authService
+      .login(
+        this.loginForm.get('username').value,
+        this.loginForm.get('password').value
+      )
+      .subscribe({
+        error: (res) => {
+          this.toastr.error(res.error);
+        },
+        next: (res: any) => {
+          this.route.navigate([`/boards/${res.user[0].userId}`]);
+          localStorage.setItem('token', res.token);
+        },
+      });
+  }
 
   ngOnInit(): void {}
 }
