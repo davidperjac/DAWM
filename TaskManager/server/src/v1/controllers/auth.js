@@ -26,7 +26,7 @@ exports.register = async (req, res) => {
 			username: username,
 			password: hashedPassword,
 		});
-		res.status(200).json({ user });
+		res.status(201).json({ user });
 	} catch (error) {
 		res.status(500).json(error);
 	}
