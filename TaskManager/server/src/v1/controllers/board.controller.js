@@ -20,3 +20,7 @@ exports.getUserBoards = async (req, res) => {
 		res.status(500).send(error);
 	}
 };
+
+exports.addBoard = async (req, res) => {};
+
+exports.deleteBoard = async (req, res) => {};

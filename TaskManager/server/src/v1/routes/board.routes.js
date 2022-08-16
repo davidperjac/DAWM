@@ -8,4 +8,10 @@ router.get('/', boardController.getAllBoards);
 /* GET USER  BOARDS */
 router.get('/:userId', boardController.getUserBoards);
 
+/* ADD BOARD */
+router.post('/:userId', boardController.addBoard);
+
+/* DELETE BOARD */
+router.delete('/:userId', boardController.deleteBoard);
+
 module.exports = router;

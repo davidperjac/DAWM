@@ -24,11 +24,10 @@
   </mat-toolbar>
 
   <div class="cards">
-    <h1 *ngIf="boards.length == 0">NO BOARDS</h1>
+    <!-- <h1 class="no-boards-title" *ngIf="boards.length == 0">NO BOARDS</h1> -->
     <mat-card
       class="card"
       *ngFor="let board of boards"
-      matBadge="{{ board.completed }}"
       matBadgePosition="after"
       matBadgeSize="large"
       matBadgeColor="warn"

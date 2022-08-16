@@ -1,3 +1,4 @@
+import { BoardService } from 'src/app/services/board.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -17,36 +18,12 @@ export class BoardsComponent implements OnInit {
     password: '',
   };
 
-  boards: Board[] = [
-    {
-      id: 'board1',
-      name: 'Work',
-      description: 'Workflow',
-      completed: 5,
-    },
-    {
-      id: 'board2',
-      name: 'Code',
-      description: 'React,Angular,Vue',
-      completed: 2,
-    },
-    {
-      id: 'board3',
-      name: 'Espol',
-      description: 'DAWM',
-      completed: 3,
-    },
-    {
-      id: 'board4',
-      name: 'Home',
-      description: 'Soccer match',
-      completed: 6,
-    },
-  ];
+  boards: Board[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private boardService: BoardService
   ) {}
 
   logout() {
@@ -59,6 +36,9 @@ export class BoardsComponent implements OnInit {
     });
     this.authService.getUser(this.userId).subscribe((res: any) => {
       this.user = res[0] as User;
+    });
+    this.boardService.getBoards(this.userId).subscribe((res: any) => {
+      this.boards = res as any;
     });
   }
 }
