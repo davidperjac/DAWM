@@ -13,7 +13,12 @@ export class BoardService {
     return this.http.get(this.URL + `/${userId}`);
   }
 
-  addBoard() {}
+  addBoard(userId: string, name: string, description: string) {
+    return this.http.post(this.URL + `/${userId}`, {
+      name: name,
+      description: description,
+    });
+  }
 
   deleteBoard() {}
 }

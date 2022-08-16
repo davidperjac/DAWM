@@ -1,5 +1,6 @@
 export interface Board {
-  id: string;
+  boardId: string;
   name: string;
   description: string;
+  userId: string;
 }

@@ -21,6 +21,19 @@ exports.getUserBoards = async (req, res) => {
 	}
 };
 
-exports.addBoard = async (req, res) => {};
+exports.addBoard = async (req, res) => {
+	try {
+		const { userId } = req.params;
+		const { name, description } = req.body;
+		const board = await models.Boards.create({
+			name: name,
+			description: description,
+			userId: userId,
+		});
+		res.status.json({ board });
+	} catch (error) {
+		res.status(500).send(error);
+	}
+};
 
 exports.deleteBoard = async (req, res) => {};

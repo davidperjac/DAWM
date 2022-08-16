@@ -14,19 +14,23 @@
 
 <div class="create-board-container">
   <div class="texts">
-    <h1 class="create-title">Create a new board</h1>
+    <h1 class="create-title">What's for today</h1>
   </div>
-  <form class="board-form">
+  <form class="board-form" [formGroup]="boardForm">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Title</mat-label>
-      <input type="text" matInput />
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="name" />
+      <mat-error *ngIf="boardForm.get('name').hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Description</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput formControlName="description" />
+      <mat-error *ngIf="boardForm.get('description').hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
-    <button mat-raised-button class="add-btn" routerLink="/boards/{{ userId }}">
-      ADD
-    </button>
+    <button mat-raised-button class="add-btn" (click)="addBoard()">ADD</button>
   </form>
 </div>
