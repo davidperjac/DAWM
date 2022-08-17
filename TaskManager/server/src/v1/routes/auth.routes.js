@@ -8,14 +8,13 @@ router.get('/', authController.getAllUsers);
 /* GET USER BY ID */
 router.get('/:id', authController.getUserById);
 
-/* REGISTER USERS */
+/* REGISTER USER */
 router.post('/register', authController.register);
 
-/* GET ALL USERS */
+/* LOGIN USER */
 router.post('/login', authController.login);
 
-// router.post('/verify-token', tokenHandler.verifyToken, (req, res) => {
-// 	res.status(200).json({ user: req.user });
-// });
+/* CHECK JWT */
+router.post('/verify-token', authController.verifyToken);
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const tokenDecode = require('../handlers/tokenHandler');
 const models = require('../handlers/getModels');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -54,11 +55,30 @@ exports.login = async (req, res) => {
 		const passwordMatch = await bcrypt.compare(password, hashedPassword);
 		if (!passwordMatch) return res.status(401).send('Invalid credentials');
 
-		const token = jsonwebtoken.sign({ id: user.id }, process.env.JWT_KEY, {
-			expiresIn: '24h',
-		});
+		const token = jsonwebtoken.sign(
+			{ id: user.username },
+			process.env.JWT_KEY,
+			{ expiresIn: '24h' }
+		);
 		res.status(200).json({ user, token });
 	} catch (error) {
 		res.status(500).json(error);
+	}
+};
+
+exports.verifyToken = async (req, res) => {
+	try {
+		const tokenDecoded = tokenDecode(req.body.token);
+		if (tokenDecoded) {
+			const user = await models.Users.findAll({
+				where: { userId: tokenDecoded.id },
+			});
+			if (!user) return res.status(401).send(false);
+			res.status(200).send(true);
+		} else {
+			res.status(401).json('Unauthorized');
+		}
+	} catch (error) {
+		res.status(500).send(false);
 	}
 };

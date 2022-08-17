@@ -1,4 +1,3 @@
-// import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,9 +9,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    return token !== null;
+  isAuthenticated(token: string) {
+    return this.http.post(this.URL + '/verify-token', { token });
   }
 
   register(username: string, password: string) {
