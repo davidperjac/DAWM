@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('password').value
       )
       .subscribe({
-        error: (res) => {
+        error: (res: any) => {
           this.toastr.error(res.error);
         },
         next: (res: any) => {
-          this.route.navigate([`/boards/${res.user[0].userId}`]);
           localStorage.setItem('token', res.token);
+          this.route.navigate([`/boards/${res.user[0].userId}`]);
         },
       });
   }

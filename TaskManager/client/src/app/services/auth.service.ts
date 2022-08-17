@@ -1,6 +1,6 @@
+// import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,11 @@ export class AuthService {
   URL: string = 'http://localhost:3000/auth';
 
   constructor(private http: HttpClient) {}
+
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
+  }
 
   register(username: string, password: string) {
     return this.http.post(this.URL + '/register', {
