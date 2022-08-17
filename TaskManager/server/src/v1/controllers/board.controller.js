@@ -30,7 +30,7 @@ exports.addBoard = async (req, res) => {
 			description: description,
 			userId: userId,
 		});
-		res.status.json({ board });
+		res.status(201).json({ board });
 	} catch (error) {
 		res.status(500).send(error);
 	}
