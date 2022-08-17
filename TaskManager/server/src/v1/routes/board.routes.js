@@ -12,6 +12,6 @@ router.get('/:userId', boardController.getUserBoards);
 router.post('/:userId', boardController.addBoard);
 
 /* DELETE BOARD */
-router.delete('/:userId', boardController.deleteBoard);
+router.delete('/:boardId', boardController.deleteBoard);
 
 module.exports = router;

@@ -33,7 +33,6 @@ export class CreateBoardComponent implements OnInit {
       )
       .subscribe({
         error: (res) => {
-          console.log(res);
           this.toastr.error(res.error);
         },
         next: (res: any) => {

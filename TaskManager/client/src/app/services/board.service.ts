@@ -20,5 +20,7 @@ export class BoardService {
     });
   }
 
-  deleteBoard() {}
+  deleteBoard(boardId: string) {
+    return this.http.delete(this.URL + `/${boardId}`);
+  }
 }

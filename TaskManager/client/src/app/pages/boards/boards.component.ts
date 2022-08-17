@@ -3,7 +3,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/models/board';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boards',
@@ -21,13 +23,30 @@ export class BoardsComponent implements OnInit {
   boards: Board[] = [];
 
   constructor(
-    private route: ActivatedRoute,
+    private boardService: BoardService,
     private authService: AuthService,
-    private boardService: BoardService
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   logout() {
     localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
+  deleteBoard(boardId: string) {
+    this.boardService.deleteBoard(boardId).subscribe({
+      error: (res) => {
+        this.toastr.error(res.error);
+      },
+      next: (res: any) => {
+        this.toastr.info(res);
+        this.boardService.getBoards(this.userId).subscribe((res: any) => {
+          this.boards = res as any;
+        });
+      },
+    });
   }
 
   ngOnInit(): void {

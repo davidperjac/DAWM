@@ -1,11 +1,6 @@
 <div class="boards-container">
   <mat-toolbar class="toolbar" autosize>
-    <button
-      mat-icon-button
-      class="logout-btn"
-      routerLink="/login"
-      (click)="logout()"
-    >
+    <button mat-icon-button class="logout-btn" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
     <div class="left">
@@ -40,7 +35,7 @@
         <p>{{ board.description }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>
+        <button mat-button (click)="deleteBoard(board.boardId)">
           <mat-icon color="warn">delete</mat-icon>
         </button>
         <button mat-button>

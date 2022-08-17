@@ -36,4 +36,16 @@ exports.addBoard = async (req, res) => {
 	}
 };
 
-exports.deleteBoard = async (req, res) => {};
+exports.deleteBoard = async (req, res) => {
+	try {
+		const { boardId } = req.params;
+		const board = await models.Boards.destroy({
+			where: {
+				boardId: boardId,
+			},
+		});
+		res.status(200).json('Board deleted successfully');
+	} catch (error) {
+		res.status(500).send(error);
+	}
+};
