@@ -38,7 +38,7 @@
         <button mat-button (click)="deleteBoard(board.boardId)">
           <mat-icon color="warn">delete</mat-icon>
         </button>
-        <button mat-button>
+        <button mat-button (click)="updateBoard(board.boardId)">
           <mat-icon color="edit">edit</mat-icon>
         </button>
       </mat-card-actions>

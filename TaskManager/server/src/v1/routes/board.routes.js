@@ -9,7 +9,7 @@ router.get('/', boardController.getAllBoards);
 router.get('/:userId', boardController.getUserBoards);
 
 /* ADD BOARD */
-router.post('/:userId', boardController.addBoard);
+router.post('/', boardController.addBoard);
 
 /* DELETE BOARD */
 router.delete('/:boardId', boardController.deleteBoard);

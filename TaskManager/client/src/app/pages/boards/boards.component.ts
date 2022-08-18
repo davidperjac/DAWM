@@ -35,6 +35,10 @@ export class BoardsComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  updateBoard(boardId: string) {
+    this.router.navigate([`/create-board/${this.userId}`]);
+  }
+
   deleteBoard(boardId: string) {
     this.boardService.deleteBoard(boardId).subscribe({
       error: (res) => {
@@ -57,7 +61,7 @@ export class BoardsComponent implements OnInit {
       this.user = res[0] as User;
     });
     this.boardService.getBoards(this.userId).subscribe((res: any) => {
-      this.boards = res as any;
+      this.boards = res as Board[];
     });
   }
 }

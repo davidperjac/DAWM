@@ -73,7 +73,6 @@ exports.verifyToken = async (req, res) => {
 			req.body.token,
 			process.env.JWT_KEY
 		);
-		console.log(tokenDecoded);
 		if (tokenDecoded) {
 			const user = await models.Users.findAll({
 				where: { userId: tokenDecoded.id },

@@ -12,7 +12,6 @@ module.exports = function (sequelize, DataTypes) {
 			name: {
 				type: DataTypes.STRING(45),
 				allowNull: false,
-				unique: 'name_UNIQUE',
 			},
 			description: {
 				type: DataTypes.STRING(45),
@@ -46,7 +45,6 @@ module.exports = function (sequelize, DataTypes) {
 				},
 				{
 					name: 'name_UNIQUE',
-					unique: true,
 					using: 'BTREE',
 					fields: [{ name: 'name' }],
 				},
