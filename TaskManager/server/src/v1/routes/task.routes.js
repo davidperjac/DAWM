@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const taskController = require('../controllers/task.controller');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-	res.render('index', { title: 'Task' });
-});
+/* GET TASKS */
+router.get('/', taskController.getTasks);
 
 module.exports = router;
