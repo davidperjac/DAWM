@@ -1,4 +1,3 @@
-const tokenDecode = require('../handlers/tokenHandler');
 const models = require('../handlers/getModels');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -56,9 +55,11 @@ exports.login = async (req, res) => {
 		if (!passwordMatch) return res.status(401).send('Invalid credentials');
 
 		const token = jsonwebtoken.sign(
-			{ id: user.username },
+			{ id: user[0].dataValues.userId },
 			process.env.JWT_KEY,
-			{ expiresIn: '24h' }
+			{
+				expiresIn: '24h',
+			}
 		);
 		res.status(200).json({ user, token });
 	} catch (error) {
@@ -68,15 +69,20 @@ exports.login = async (req, res) => {
 
 exports.verifyToken = async (req, res) => {
 	try {
-		const tokenDecoded = tokenDecode(req.body.token);
+		const tokenDecoded = jsonwebtoken.verify(
+			req.body.token,
+			process.env.JWT_KEY
+		);
+		console.log(tokenDecoded);
 		if (tokenDecoded) {
 			const user = await models.Users.findAll({
 				where: { userId: tokenDecoded.id },
 			});
 			if (!user) return res.status(401).send(false);
+
 			res.status(200).send(true);
 		} else {
-			res.status(401).json('Unauthorized');
+			res.status(401).send(false);
 		}
 	} catch (error) {
 		res.status(500).send(false);

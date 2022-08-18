@@ -41,7 +41,7 @@ export class BoardsComponent implements OnInit {
         this.toastr.error(res.error);
       },
       next: (res: any) => {
-        this.toastr.info(res);
+        this.toastr.success(res);
         this.boardService.getBoards(this.userId).subscribe((res: any) => {
           this.boards = res as any;
         });

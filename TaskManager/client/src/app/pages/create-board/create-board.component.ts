@@ -36,7 +36,7 @@ export class CreateBoardComponent implements OnInit {
           this.toastr.error(res.error);
         },
         next: (res: any) => {
-          this.toastr.info('Board created successfully');
+          this.toastr.success('Board created successfully');
         },
       });
   }

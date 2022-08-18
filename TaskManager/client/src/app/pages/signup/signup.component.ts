@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
         },
         next: (res) => {
           this.route.navigate(['/login']);
-          this.toastr.info('User created successfully');
+          this.toastr.success('User created successfully');
         },
       });
   }
