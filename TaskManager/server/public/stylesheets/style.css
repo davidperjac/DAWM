@@ -5,3 +5,11 @@ body {
 a {
 	color: #00b7ff;
 }
+
+.card {
+	transition: ease 0.2s;
+}
+
+.card:hover {
+	transform: scale(1.025) rotate(3deg);
+}
