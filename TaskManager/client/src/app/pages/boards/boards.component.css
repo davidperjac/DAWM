@@ -4,7 +4,8 @@
   z-index: 2;
   display: flex;
   justify-content: space-around;
-  background-color: #00adb5;
+  background-color: #222831;
+  color: #eeeeee;
 }
 
 .boards-container {

@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbar">
+<!-- <mat-toolbar class="toolbar">
   <button mat-icon-button class="back-btn" routerLink="/boards/{{ userId }}">
     <mat-icon>arrow_back</mat-icon>
   </button>
@@ -14,19 +14,22 @@
       <mat-icon>edit</mat-icon>
     </button>
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
 
 <div class="tasks-container">
   <h1>What's the plan for today?</h1>
-  <form class="task-form">
+  <form class="task-form" [formGroup]="taskForm">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Task</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Homework" />
+      <input matInput formControlName="name" />
     </mat-form-field>
-    <button mat-fab class="add-btn" type="submit">
+    <button mat-fab class="add-btn" type="submit" (click)="addTask()">
       <mat-icon>add</mat-icon>
     </button>
   </form>
+
+  <mat-progress-spinner *ngIf="loading" class="spinner" [mode]="mode">
+  </mat-progress-spinner>
 
   <div class="tasks-list" *ngFor="let task of tasks">
     <div class="card">

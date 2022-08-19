@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbar">
+<!-- <mat-toolbar class="toolbar">
   <button mat-icon-button class="back-btn" routerLink="/boards/{{ userId }}">
     <mat-icon>arrow_back</mat-icon>
   </button>
@@ -10,11 +10,11 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
 
 <div class="create-board-container">
   <div class="texts">
-    <h1 class="create-title">What's up for today</h1>
+    <h1 class="create-title">Create a new Board</h1>
   </div>
   <form class="board-form" [formGroup]="boardForm">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -31,6 +31,13 @@
         Description is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button class="add-btn" (click)="addBoard()">ADD</button>
+    <button
+      mat-raised-button
+      class="add-btn"
+      (click)="addBoard()"
+      [disabled]="!boardForm.valid"
+    >
+      ADD
+    </button>
   </form>
 </div>

@@ -22,10 +22,6 @@
 				"type": "faker",
 				"value": "name.firstName"
 			},
-			"userId": {
-				"type": "Literal",
-				"value": "fcead8f0-b974-4b4e-b8ba-fb42d1d315d6"
-			},
 			"isCompleted": {
 				"type": "randomElementInArray",
 				"value": [false]

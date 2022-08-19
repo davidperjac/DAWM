@@ -5,4 +5,10 @@ const taskController = require('../controllers/task.controller');
 /* GET TASKS */
 router.get('/:boardId', taskController.getTasks);
 
+/* ADD TASK */
+router.post('/:boardId', taskController.addTask);
+
+/* DELETE TASK */
+router.get('/:boardId', taskController.deleteTask);
+
 module.exports = router;

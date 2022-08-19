@@ -9,6 +9,10 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
+  addTask(boardId: string, name: string) {
+    return this.http.post(this.URL + `/${boardId}`, { name });
+  }
+
   getTasks(boardId: string) {
     return this.http.get(this.URL + `/${boardId}`);
   }

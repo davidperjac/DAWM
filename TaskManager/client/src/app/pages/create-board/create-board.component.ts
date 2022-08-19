@@ -14,8 +14,8 @@ export class CreateBoardComponent implements OnInit {
   boardForm: FormGroup | any;
 
   constructor(
-    private route: ActivatedRoute,
     private boardService: BoardService,
+    private route: ActivatedRoute,
     private toastr: ToastrService
   ) {
     this.boardForm = new FormGroup({
