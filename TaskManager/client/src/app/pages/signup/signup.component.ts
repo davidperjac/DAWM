@@ -21,8 +21,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private route: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: Router
   ) {
     this.registerForm = new FormGroup(
       {

@@ -1,10 +1,10 @@
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from 'src/app/services/task.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Task } from 'src/app/models/task';
-
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-task',
@@ -20,7 +20,11 @@ export class TaskComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute) {
+  constructor(
+    private taskService: TaskService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+  ) {
     this.taskForm = new FormGroup({
       name: new FormControl('Add some fun stuff', [Validators.required]),
     });
@@ -31,12 +35,39 @@ export class TaskComponent implements OnInit {
       .addTask(this.boardId, this.taskForm.get('name').value)
       .subscribe({
         error: (res) => {
-          console.log(res);
+          this.toastr.error(res.error);
         },
         next: (res: any) => {
-          console.log(res);
+          this.toastr.success(res);
+          this.taskService.getTasks(this.boardId).subscribe({
+            error: (res) => {
+              console.log(res.error);
+            },
+            next: (res: any) => {
+              this.tasks = res as Task[];
+            },
+          });
         },
       });
+  }
+
+  deleteTask(taskId: string) {
+    this.taskService.deleteTask(taskId).subscribe({
+      error: (res) => {
+        this.toastr.error(res.error);
+      },
+      next: (res: any) => {
+        this.toastr.success(res);
+        this.taskService.getTasks(this.boardId).subscribe({
+          error: (res) => {
+            console.log(res.error);
+          },
+          next: (res: any) => {
+            this.tasks = res as Task[];
+          },
+        });
+      },
+    });
   }
 
   ngOnInit(): void {

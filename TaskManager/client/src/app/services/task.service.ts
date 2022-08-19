@@ -13,6 +13,10 @@ export class TaskService {
     return this.http.post(this.URL + `/${boardId}`, { name });
   }
 
+  deleteTask(taskId: string) {
+    return this.http.delete(this.URL + `/${taskId}`);
+  }
+
   getTasks(boardId: string) {
     return this.http.get(this.URL + `/${boardId}`);
   }

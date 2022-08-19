@@ -37,7 +37,7 @@
         <mat-checkbox [(ngModel)]="task.completed">{{
           task.name
         }}</mat-checkbox>
-        <button mat-icon-button class="delete">
+        <button mat-icon-button class="delete" (click)="deleteTask(task.id)">
           <mat-icon color="warn">delete</mat-icon>
         </button>
       </h3>

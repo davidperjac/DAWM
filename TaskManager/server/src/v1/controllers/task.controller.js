@@ -21,18 +21,49 @@ exports.addTask = async (req, res) => {
 		const { boardId } = req.params;
 		const { name } = req.body;
 
-		dbRef.push({
-			boardId: boardId,
+		const data = await get(child(dbRef, '/'));
+		const boards = data.val().collection;
+
+		if (boards.some((b) => b.name === name && b.boardId === boardId)) {
+			return res.status(400).json('Task name already in use');
+		}
+
+		const date = new Date();
+		const newBoard = {
 			name: name,
-			completed: false,
+			boardId: boardId,
+			isCompleted: false,
+			createdAt: 'hoy',
+			id: boards[boards.length - 1].id + 1,
+		};
+
+		const collection = [...boards, newBoard];
+		set(ref(firebaseDB, '/'), {
+			collection,
 		});
 
-		res.status(200).send('Task added succesfully');
+		res.status(201).json('Task created successfully');
 	} catch (error) {
 		res.status(500).send({ error });
 	}
 };
 
-exports.deleteTask = async (req, res) => {};
+exports.deleteTask = async (req, res) => {
+	try {
+		const { taskId } = req.params;
+
+		const data = await get(child(dbRef, '/'));
+		const tasks = data.val().collection;
+
+		const collection = tasks.filter((t) => t.id !== parseInt(taskId));
+
+		set(ref(firebaseDB, '/'), {
+			collection,
+		});
+		res.status(201).json('Task deleted successfully');
+	} catch (error) {
+		res.status(500).send({ error });
+	}
+};
 
 exports.completeTask = async (req, res) => {};
