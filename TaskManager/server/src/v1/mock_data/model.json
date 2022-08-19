@@ -1,10 +1,17 @@
 {
-	"config": {
-		"locale": "en"
-	},
 	"model": {
 		"type": "Object",
 		"value": {
+			"boardId": {
+				"type": "randomElementInArray",
+				"value": [
+					"898d8c6a-972d-4e26-8232-945250d30aae",
+					"c9cb7d88-d581-4066-91ba-339068f8438f",
+					"abd6f9eb-e66b-4b13-93b1-6d00ee430d2a",
+					"5ea2f234-99b1-4d53-9737-33922f7d0850",
+					"688f8887-91bd-4e49-92d6-c79838cb3f55"
+				]
+			},
 			"id": {
 				"type": "incrementNumber",
 				"options": {
@@ -18,10 +25,6 @@
 			"userId": {
 				"type": "Literal",
 				"value": "fcead8f0-b974-4b4e-b8ba-fb42d1d315d6"
-			},
-			"boardId": {
-				"type": "Literal",
-				"value": "898d8c6a-972d-4e26-8232-945250d30aae"
 			},
 			"isCompleted": {
 				"type": "randomElementInArray",

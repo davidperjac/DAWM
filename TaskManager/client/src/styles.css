@@ -20,3 +20,18 @@ body {
   justify-content: center;
   gap: 1rem;
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: #00adb5;
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #00acb5d2;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}

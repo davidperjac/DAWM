@@ -4,10 +4,11 @@ const firebaseUrl =
 
 exports.getTasks = async (req, res) => {
 	try {
-		const tasks = await axios.get(firebaseUrl);
-		res.status(200).send(tasks.data);
+		const { boardId } = req.params;
+		const { data } = await axios.get(firebaseUrl);
+		const boardTasks = data.filter((x) => x.boardId === boardId);
+		res.status(200).send(boardTasks);
 	} catch (error) {
-		console.log(error);
 		res.status(500).send({ error });
 	}
 };

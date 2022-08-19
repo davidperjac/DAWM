@@ -1,7 +1,8 @@
 import { BoardService } from 'src/app/services/board.service';
+import { TaskService } from 'src/app/services/task.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-task',
@@ -12,15 +13,11 @@ export class TaskComponent implements OnInit {
   public userId: string = '';
   public boardId: string = '';
 
-  tasks = this._formBuilder.group({
-    match: false,
-    groceries: false,
-    flight: false,
-  });
+  tasks: Task[] = [];
 
   constructor(
     private boardService: BoardService,
-    private _formBuilder: FormBuilder,
+    private taskService: TaskService,
     private route: ActivatedRoute
   ) {}
 
@@ -29,12 +26,13 @@ export class TaskComponent implements OnInit {
       this.userId = params['userId'];
       this.boardId = params['boardId'];
     });
-    this.boardService.getBoard(this.boardId).subscribe({
+    this.taskService.getTasks(this.boardId).subscribe({
       error: (res) => {
         console.log(res);
       },
-      next: (res) => {
+      next: (res: any) => {
         console.log(res);
+        this.tasks = res as Task[];
       },
     });
   }
