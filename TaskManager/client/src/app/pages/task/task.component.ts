@@ -70,6 +70,25 @@ export class TaskComponent implements OnInit {
     });
   }
 
+  completeTask(taskId: string) {
+    this.taskService.completeTask(taskId).subscribe({
+      error: (res) => {
+        this.toastr.error(res.error);
+      },
+      next: (res: any) => {
+        this.toastr.success(res);
+        this.taskService.getTasks(this.boardId).subscribe({
+          error: (res) => {
+            console.log(res.error);
+          },
+          next: (res: any) => {
+            this.tasks = res as Task[];
+          },
+        });
+      },
+    });
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userId = params['userId'];

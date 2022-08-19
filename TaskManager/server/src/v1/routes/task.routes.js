@@ -11,4 +11,7 @@ router.post('/:boardId', taskController.addTask);
 /* DELETE TASK */
 router.delete('/:taskId', taskController.deleteTask);
 
+/* COMPLETE TASK */
+router.put('/:taskId', taskController.completeTask);
+
 module.exports = router;

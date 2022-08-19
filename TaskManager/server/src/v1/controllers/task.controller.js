@@ -60,10 +60,31 @@ exports.deleteTask = async (req, res) => {
 		set(ref(firebaseDB, '/'), {
 			collection,
 		});
-		res.status(201).json('Task deleted successfully');
+		res.status(200).json('Task deleted successfully');
 	} catch (error) {
 		res.status(500).send({ error });
 	}
 };
 
-exports.completeTask = async (req, res) => {};
+exports.completeTask = async (req, res) => {
+	try {
+		const { taskId } = req.params;
+
+		const data = await get(child(dbRef, '/'));
+		const tasks = data.val().collection;
+
+		const collection = tasks.map((t) => {
+			if (t.id === parseInt(taskId)) {
+				return { ...t, isCompleted: !t.isCompleted };
+			}
+			return t;
+		});
+
+		set(ref(firebaseDB, '/'), {
+			collection,
+		});
+		res.status(200).json('Task updated successfully');
+	} catch (error) {
+		res.status(500).send({ error });
+	}
+};
