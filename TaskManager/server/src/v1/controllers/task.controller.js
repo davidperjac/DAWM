@@ -2,6 +2,17 @@ const firebaseDB = require('../utils/firebase');
 const { ref, child, get, set } = require('firebase/database');
 const dbRef = ref(firebaseDB);
 
+exports.getAllTasks = async (req, res) => {
+	try {
+		const data = await get(child(dbRef, '/'));
+		const boards = data.val().collection;
+
+		res.status(200).send(boards);
+	} catch (error) {
+		res.status(500).send({ error });
+	}
+};
+
 exports.getTasks = async (req, res) => {
 	try {
 		const { boardId } = req.params;

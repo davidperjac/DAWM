@@ -13,9 +13,9 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
 
   constructor(
-    private route: Router,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: Router
   ) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),

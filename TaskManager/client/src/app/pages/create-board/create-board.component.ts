@@ -3,6 +3,7 @@ import { BoardService } from 'src/app/services/board.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-board',
@@ -16,7 +17,8 @@ export class CreateBoardComponent implements OnInit {
   constructor(
     private boardService: BoardService,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.boardForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -37,6 +39,7 @@ export class CreateBoardComponent implements OnInit {
         },
         next: (res: any) => {
           this.toastr.success('Board created successfully');
+          this.router.navigate([`/boards/${this.userId}`]);
         },
       });
   }

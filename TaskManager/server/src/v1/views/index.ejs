@@ -90,9 +90,9 @@
 
 			<div class="row justify-content-between">
 				<h1 class="display-6 fw-bold mt-3">MEAN Stack</h1>
-				<h4 class="mt-2">
+				<p class="lead mb-2">
 					The Web App is built with the following technologies
-				</h4>
+				</p>
 				<div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4">
 					<div class="col">
 						<div
@@ -147,8 +147,40 @@
 				</div>
 			</div>
 
-			<div class="row" id="documentation">
-				<h2 class="display-6 fw-bold mt-5">API Documentation</h2>
+			<div class="row bg-light rounded-3 mt-5 p-5" id="documentation">
+				<h3 class="display-6 fw-bold mt-4">API Documentation</h3>
+				<p class="lead mb-2">
+					This API is divided in 3 sections : Authentication, Boards and Tasks.
+					Below there are the available routes and methods used in each one, and
+					their corresponding CRUD operation.
+				</p>
+				<div class="auth mt-4">
+					<h3>Authentication</h3>
+					<code>http://localhost:3000/api/v1/auth</code>
+					<div class="auth-methods mt-3">
+						<h4>GET</h4>
+						<h4>POST</h4>
+					</div>
+				</div>
+				<div class="boards mt-4">
+					<h3>Boards</h3>
+					<code>http://localhost:3000/api/v1/boards</code>
+					<div class="boards-methods mt-3">
+						<h4>GET</h4>
+						<h4>POST</h4>
+						<h4>DELETE</h4>
+					</div>
+				</div>
+				<div class="tasks mt-4">
+					<h3>Tasks</h3>
+					<code>http://localhost:3000/api/v1/tasks</code>
+					<div class="tasks-methods mt-3">
+						<h4>GET</h4>
+						<h4>POST</h4>
+						<h4>DELETE</h4>
+						<h4>PUT</h4>
+					</div>
+				</div>
 			</div>
 
 			<footer class="pt-3 mt-4 text-muted border-top">
