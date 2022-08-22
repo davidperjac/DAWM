@@ -35,10 +35,6 @@ export class BoardsComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  updateBoard(boardId: string) {
-    this.router.navigate([`/create-board/${this.userId}`]);
-  }
-
   deleteBoard(boardId: string) {
     this.boardService.deleteBoard(boardId).subscribe({
       error: (res) => {

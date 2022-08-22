@@ -31,24 +31,26 @@ export class TaskComponent implements OnInit {
   }
 
   addTask() {
-    this.taskService
-      .addTask(this.boardId, this.taskForm.get('name').value)
-      .subscribe({
-        error: (res) => {
-          this.toastr.error(res.error);
-        },
-        next: (res: any) => {
-          this.toastr.success(res);
-          this.taskService.getTasks(this.boardId).subscribe({
-            error: (res) => {
-              console.log(res.error);
-            },
-            next: (res: any) => {
-              this.tasks = res as Task[];
-            },
-          });
-        },
-      });
+    if (this.taskForm.get('name').value !== '') {
+      this.taskService
+        .addTask(this.boardId, this.taskForm.get('name').value)
+        .subscribe({
+          error: (res) => {
+            this.toastr.error(res.error);
+          },
+          next: (res: any) => {
+            this.toastr.success(res);
+            this.taskService.getTasks(this.boardId).subscribe({
+              error: (res) => {
+                console.log(res.error);
+              },
+              next: (res: any) => {
+                this.tasks = res as Task[];
+              },
+            });
+          },
+        });
+    }
   }
 
   deleteTask(taskId: string) {

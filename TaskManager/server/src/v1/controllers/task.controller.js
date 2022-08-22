@@ -1,5 +1,5 @@
-const firebaseDB = require('../utils/firebase');
 const { ref, child, get, set } = require('firebase/database');
+const firebaseDB = require('../utils/firebase');
 const dbRef = ref(firebaseDB);
 
 exports.getAllTasks = async (req, res) => {

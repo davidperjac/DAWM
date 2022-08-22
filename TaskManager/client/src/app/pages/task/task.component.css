@@ -9,6 +9,11 @@
   background-color: #00adb5;
 }
 
+.up {
+  display: flex;
+  align-items: center;
+}
+
 .task-form {
   display: flex;
   gap: 1rem;
@@ -19,6 +24,13 @@
   background-color: #00adb5;
   color: #eeeeee;
   border-radius: 0.5rem;
+}
+
+.mat-icon-button:not(.delete) {
+  background-color: #393e46;
+  position: relative;
+  top: -0.5rem;
+  left: -1.5rem;
 }
 
 .task {

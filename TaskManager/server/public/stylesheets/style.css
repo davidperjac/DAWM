@@ -13,3 +13,14 @@ a {
 .card:hover {
 	transform: scale(1.025) rotate(3deg);
 }
+
+.foto {
+	position: relative;
+	background-color: red;
+	top: 0;
+	transition: top ease 0.2s;
+}
+
+.foto:hover {
+	top: -13rem;
+}

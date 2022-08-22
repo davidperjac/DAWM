@@ -3,6 +3,18 @@
   color: #eeeeee;
 }
 
+.up {
+  display: flex;
+  align-items: center;
+}
+
+.mat-icon-button {
+  background-color: #393e46;
+  position: relative;
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
 .create-title {
   font-weight: 700;
   color: #eeeeee;

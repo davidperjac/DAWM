@@ -1,19 +1,8 @@
-<!-- <mat-toolbar class="toolbar">
-  <button mat-icon-button class="back-btn" routerLink="/boards/{{ userId }}">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <div class="left">
-    <span class="example-spacer">Create a Board</span>
-  </div>
-  <div class="right">
-    <button mat-icon-button class="delete">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</mat-toolbar> -->
-
 <div class="create-board-container">
-  <div class="texts">
+  <div class="up">
+    <button mat-icon-button class="back" routerLink="/boards/{{ userId }}">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
     <h1 class="create-title">Create a new Board</h1>
   </div>
   <form class="board-form" [formGroup]="boardForm">

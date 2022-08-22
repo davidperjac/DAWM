@@ -9,6 +9,7 @@ h1 {
 
 .signup-container {
   display: flex;
+  width: 20rem;
   flex-direction: column;
   margin-top: 8rem;
   align-items: center;

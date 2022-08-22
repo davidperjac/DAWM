@@ -6,13 +6,10 @@ const boardController = require('../controllers/board.controller');
 router.get('/', boardController.getAllBoards);
 
 /* ADD BOARD */
-router.post('/', boardController.addBoard);
+router.post('/:userId', boardController.addBoard);
 
-/* GET USER  BOARDS */
+/* GET USER BOARDS */
 router.get('/:userId', boardController.getUserBoards);
-
-/* GET BOARD */
-router.get('/:boardId', boardController.getBoard);
 
 /* DELETE BOARD */
 router.delete('/:boardId', boardController.deleteBoard);

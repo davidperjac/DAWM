@@ -1,5 +1,9 @@
 const models = require('../handlers/getModels');
 
+const { ref, child, get, set } = require('firebase/database');
+const firebaseDB = require('../utils/firebase');
+const dbRef = ref(firebaseDB);
+
 exports.getAllBoards = async (req, res) => {
 	try {
 		const boards = await models.Boards.findAll();
@@ -21,21 +25,10 @@ exports.getUserBoards = async (req, res) => {
 	}
 };
 
-exports.getBoard = async (req, res) => {
-	try {
-		const { boardId } = req.params;
-		const board = await models.Boards.findAll({
-			where: { boardId: boardId },
-		});
-		res.status(200).json({ board });
-	} catch (error) {
-		res.status(500).send(error);
-	}
-};
-
 exports.addBoard = async (req, res) => {
 	try {
-		const { name, description, userId } = req.body;
+		const { userId } = req.params;
+		const { name, description } = req.body;
 		const checkBoard = await models.Boards.findAll({
 			where: {
 				userId: userId,
@@ -65,6 +58,16 @@ exports.deleteBoard = async (req, res) => {
 				boardId: boardId,
 			},
 		});
+
+		const data = await get(child(dbRef, '/'));
+		const tasks = data.val().collection;
+
+		const collection = tasks.filter((t) => t.boardId !== boardId);
+
+		set(ref(firebaseDB, '/'), {
+			collection,
+		});
+
 		res.status(200).json('Board deleted successfully');
 	} catch (error) {
 		res.status(500).send(error);

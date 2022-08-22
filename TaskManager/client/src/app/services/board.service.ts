@@ -18,8 +18,7 @@ export class BoardService {
   }
 
   addBoard(userId: string, name: string, description: string) {
-    return this.http.post(this.URL, {
-      userId: userId,
+    return this.http.post(this.URL + `/${userId}`, {
       name: name,
       description: description,
     });

@@ -19,7 +19,7 @@
 					<span class="fs-4">Taskin API </span>
 				</a>
 				<a
-					href="https://github.com/davidperjac"
+					href="https://github.com/davidperjac/DAWM/tree/master/TaskManager"
 					class="navbar-brand align-items-center"
 				>
 					<svg
@@ -47,8 +47,8 @@
 							Taskin is a MEAN Stack Web Application for productivity that
 							allows you to create tasks and organize them by boards. It has
 							features as authentication and authorization for securing routes.
-							Uses MySQL as relational database and Express as NodeJS server
-							framework.
+							Uses MySQL as relational database, Firebase Realtime Database as a
+							non relational database and Express as NodeJS server framework.
 						</p>
 						<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
 							<a href="#documentation">
@@ -77,7 +77,7 @@
 						<div class="container px-5">
 							<img
 								src="/images/taskin.png"
-								class="img-fluid border rounded-3 shadow-xl"
+								class="foto img-fluid border rounded-3 shadow-xl"
 								alt="Example image"
 								width="700"
 								height="500"
@@ -97,10 +97,7 @@
 					<div class="col">
 						<div
 							class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
-							style="
-								background-image: url('/images/mysql.webp');
-								object-fit: cover;
-							"
+							style="background-image: url('/images/mysql.webp')"
 						>
 							<div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
 								<h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-light">
@@ -156,35 +153,106 @@
 				</p>
 				<div class="auth mt-4">
 					<h3>Authentication</h3>
-					<code>http://localhost:3000/api/v1/auth</code>
 					<div class="auth-methods mt-3">
-						<h4>GET</h4>
-						<h4>POST</h4>
+						<div class="get">
+							<h4>GET</h4>
+							<code>http://localhost:3000/api/v1/auth</code>
+							<p class="lead mb-3">
+								Get all users. Passwords are encrypted by bcrypt, the ids are in
+								UUID format.
+							</p>
+							<code>http://localhost:3000/api/v1/auth/:userId</code>
+							<p class="lead mb-3">Get a user by its id.</p>
+						</div>
+						<div class="post">
+							<h4>POST</h4>
+							<code>http://localhost:3000/api/v1/auth/register</code>
+							<p class="lead mb-3">
+								Register an user in the application. It checks if a username is
+								already taken.
+							</p>
+							<code>http://localhost:3000/api/v1/auth/login</code>
+							<p class="lead mb-3">
+								Login a user in the application. It checks if a username is
+								already registered.
+							</p>
+							<code>http://localhost:3000/api/v1/auth/verify-token</code>
+							<p class="lead mb-3">
+								Checks if the stored JSON Web Token in Local Storage has the
+								correct format and belongs to an existing user. In the
+								application an Angular Guard protects certain views depending on
+								the response of this route.
+							</p>
+						</div>
 					</div>
 				</div>
 				<div class="boards mt-4">
 					<h3>Boards</h3>
-					<code>http://localhost:3000/api/v1/boards</code>
 					<div class="boards-methods mt-3">
-						<h4>GET</h4>
-						<h4>POST</h4>
-						<h4>DELETE</h4>
+						<div class="get">
+							<h4>GET</h4>
+							<code>http://localhost:3000/api/v1/boards</code>
+							<p class="lead mb-3">
+								Get all boards in the application. The ids are in UUID format.
+							</p>
+							<code>http://localhost:3000/api/v1/boards/:userId</code>
+							<p class="lead mb-3">Get all boards of the specified user.</p>
+						</div>
+						<div class="post">
+							<h4>POST</h4>
+							<code>http://localhost:3000/api/v1/boards/:userId</code>
+							<p class="lead mb-3">
+								Add a board to the application of the specified user. It checks
+								if the user already has a board with the provided name.
+							</p>
+						</div>
+						<div class="delete">
+							<h4>DELETE</h4>
+							<code>http://localhost:3000/api/v1/boards/:boardId</code>
+							<p class="lead mb-3">Deletes the specified board.</p>
+						</div>
 					</div>
 				</div>
 				<div class="tasks mt-4">
 					<h3>Tasks</h3>
-					<code>http://localhost:3000/api/v1/tasks</code>
 					<div class="tasks-methods mt-3">
-						<h4>GET</h4>
-						<h4>POST</h4>
-						<h4>DELETE</h4>
-						<h4>PUT</h4>
+						<div class="get">
+							<h4>GET</h4>
+							<code>http://localhost:3000/api/v1/tasks</code>
+							<p class="lead mb-3">
+								Get all the tasks in the application. The tasks are fetch from
+								the Firebase Realtime Database. The ids are incremental
+								integers.
+							</p>
+							<code>http://localhost:3000/api/v1/tasks/:boardId</code>
+							<p class="lead mb-3">Get all the tasks of the specified board.</p>
+						</div>
+						<div class="post">
+							<h4>POST</h4>
+							<code>http://localhost:3000/api/v1/tasks/:boardId</code>
+							<p class="lead mb-3">Add a task to the specified board.</p>
+						</div>
+						<div class="delete">
+							<h4>DELETE</h4>
+							<code>http://localhost:3000/api/v1/tasks/:taskId</code>
+							<p class="lead mb-3">Deletes the specified task.</p>
+						</div>
+						<div class="put">
+							<h4>PUT</h4>
+							<code>http://localhost:3000/api/v1/tasks/:taskId</code>
+							<p class="lead mb-3">
+								Updates the specified task. It check or uncheck the task.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
 
 			<footer class="pt-3 mt-4 text-muted border-top">
-				©2022 Powered by David Perez
+				©2022 Powered by
+				<a href="https://github.com/davidperjac" style="text-decoration: none">
+					David Perez
+				</a>
 			</footer>
 		</div>
 

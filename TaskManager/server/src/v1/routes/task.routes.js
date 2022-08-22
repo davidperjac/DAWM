@@ -3,9 +3,9 @@ const router = express.Router();
 const taskController = require('../controllers/task.controller');
 
 /* GET ALL TASKS */
-router.get('/',taskController.getAllTasks)
+router.get('/', taskController.getAllTasks);
 
-/* GET TASKS */
+/* GET BOARD TASKS */
 router.get('/:boardId', taskController.getTasks);
 
 /* ADD TASK */
