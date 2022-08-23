@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  URL: string = 'https://taskin-mean.herokuapp.com/api/v1/auth';
+  URL: string = environment.API_URL + '/auth';
 
   constructor(private http: HttpClient) {}
 

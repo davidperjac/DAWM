@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
-  URL: string = 'https://taskin-mean.herokuapp.com/api/v1/boards';
+  URL: string = environment.API_URL + '/boards';
 
   constructor(private http: HttpClient) {}
 
