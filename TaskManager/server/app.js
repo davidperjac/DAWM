@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/v1', require('./src/v1/routes/index'));
 
 app.all('*', function (req, res) {
-	res.redirect('http://localhost:3000/api/v1');
+	res.redirect('https://taskin-mean.herokuapp.com/api/v1');
 });
 
 // catch 404 and forward to error handler

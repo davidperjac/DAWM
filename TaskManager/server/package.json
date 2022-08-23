@@ -5,10 +5,9 @@
 	"scripts": {
 		"start": "node ./bin/www",
 		"dev": "nodemon ./bin/www",
-		"build": "npm exec sequelize-cli db:migrate & npm exec sequelize-cli db:seed:all"
+		"build": "npm exec sequelize-cli db:migrate & npm exec sequelize-cli db:seed:all && npm i bcrypt"
 	},
 	"dependencies": {
-		"bcrypt": "^5.0.1",
 		"cookie-parser": "~1.4.4",
 		"cors": "^2.8.5",
 		"debug": "~2.6.9",
@@ -26,5 +25,8 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.19"
+	},
+	"engines": {
+		"node": "16.16.0"
 	}
 }
