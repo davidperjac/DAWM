@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
 	return sequelize.define(
-		'Users',
+		'users',
 		{
 			userId: {
 				type: Sequelize.UUID,
@@ -21,7 +21,8 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		{
 			sequelize,
-			tableName: 'Users',
+			freezeTableName: true,
+			tableName: 'users',
 			timestamps: false,
 			indexes: [
 				{

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
 	return sequelize.define(
-		'Boards',
+		'boards',
 		{
 			boardId: {
 				type: Sequelize.UUID,
@@ -21,14 +21,15 @@ module.exports = function (sequelize, DataTypes) {
 				type: DataTypes.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Users',
+					model: 'users',
 					key: 'userId',
 				},
 			},
 		},
 		{
 			sequelize,
-			tableName: 'Boards',
+			freezeTableName: true,
+			tableName: 'boards',
 			timestamps: false,
 			indexes: [
 				{
