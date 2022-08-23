@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  URL: string = 'http://localhost:3000/api/v1/auth';
+  URL: string = 'https://taskin-mean.herokuapp.com/api/v1/auth';
 
   constructor(private http: HttpClient) {}
 
