@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
         return false;
       },
       next: (res) => {
-        this.toastr.success('Login succesfully');
         return true;
       },
     });
