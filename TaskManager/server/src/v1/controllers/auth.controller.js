@@ -1,6 +1,7 @@
 const models = require('../handlers/getModels');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { token } = require('morgan');
 
 exports.getAllUsers = async (req, res) => {
 	try {
@@ -73,17 +74,15 @@ exports.verifyToken = async (req, res) => {
 			req.body.token,
 			process.env.JWT_KEY
 		);
-		if (tokenDecoded) {
-			const user = await models.Users.findAll({
-				where: { userId: tokenDecoded.id },
-			});
-			if (!user) return res.status(401).send(false);
+		if (!tokenDecoded) res.status(401).send('Unauthorized');
 
-			res.status(200).send(true);
-		} else {
-			res.status(401).send(false);
-		}
+		const user = await models.Users.findAll({
+			where: { userId: tokenDecoded.id },
+		});
+
+		if (user.length === 0) return res.status(401).send('Unauthorized');
+		res.status(200).send(true);
 	} catch (error) {
-		res.status(500).send(false);
+		res.status(500).send('Unauthorized');
 	}
 };
