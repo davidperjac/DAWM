@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"start": "node ./bin/www",
-		"dev": "nodemon ./bin/www"
+		"dev": "nodemon ./bin/www",
+		"build": "npm exec sequelize-cli db:migrate & npm exec sequelize-cli db:seed:all"
 	},
 	"dependencies": {
 		"bcrypt": "^5.0.1",
