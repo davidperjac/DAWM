@@ -27,21 +27,26 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addBoard() {
-    this.boardService
-      .addBoard(
-        this.userId,
-        this.boardForm.get('name').value,
-        this.boardForm.get('description').value
-      )
-      .subscribe({
-        error: (res) => {
-          this.toastr.error(res.error);
-        },
-        next: (res: any) => {
-          this.toastr.success('Board created successfully');
-          this.router.navigate([`/boards/${this.userId}`]);
-        },
-      });
+    if (
+      this.boardForm.get('name').value !== '' &&
+      this.boardForm.get('name').description
+    ) {
+      this.boardService
+        .addBoard(
+          this.userId,
+          this.boardForm.get('name').value,
+          this.boardForm.get('description').value
+        )
+        .subscribe({
+          error: (res) => {
+            this.toastr.error(res.error);
+          },
+          next: (res: any) => {
+            this.toastr.success('Board created successfully');
+            this.router.navigate([`/boards/${this.userId}`]);
+          },
+        });
+    }
   }
 
   ngOnInit(): void {

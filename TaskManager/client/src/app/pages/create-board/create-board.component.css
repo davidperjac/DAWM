@@ -28,6 +28,8 @@
 .create-board-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 10rem;
   gap: 2rem;
   background-color: #222831;
@@ -48,4 +50,20 @@
   display: flex;
   justify-content: space-around;
   background-color: #00adb5;
+}
+
+@media only screen and (max-width: 600px) {
+  .create-board-container {
+    width: 17rem;
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .mat-icon-button {
+    left: -1rem;
+  }
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    width: 19rem;
+  }
 }

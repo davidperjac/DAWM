@@ -30,3 +30,13 @@ h1 {
 .mat-signUp {
   background-color: #00adb5;
 }
+
+@media only screen and (max-width: 600px) {
+  .signup-container {
+    width: 16rem;
+    text-align: center;
+  }
+  .signup-container:hover {
+    transform: scale(1);
+  }
+}

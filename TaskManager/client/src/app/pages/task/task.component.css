@@ -112,3 +112,27 @@ h1 {
     top: 0.2rem;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .tasks-container {
+    width: 23rem;
+    height: 45rem;
+  }
+
+  .up {
+    margin-top: 2rem;
+  }
+  .card:hover {
+    transform: scale(1);
+  }
+  .card {
+    width: 21rem;
+    margin-left: 0.5rem;
+  }
+  .mat-icon-button:not(.delete) {
+    left: -0.5rem;
+  }
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    width: 17rem;
+  }
+}

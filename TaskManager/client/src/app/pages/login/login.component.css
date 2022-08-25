@@ -30,3 +30,13 @@ h1 {
 .mat-signIn {
   background-color: #00adb5;
 }
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    width: 16rem;
+    text-align: center;
+  }
+  .login-container:hover {
+    transform: scale(1);
+  }
+}

@@ -8,6 +8,7 @@
   margin-top: 10rem;
   background-color: #222831;
   background-image: none;
+  text-align: center;
   padding: 3rem;
   border-radius: 2rem;
   transition: 0.1s ease;
@@ -30,4 +31,14 @@ h1 {
 
 h3 {
   color: #eeeeee;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-container {
+    width: 14rem;
+    text-align: center;
+  }
+  .home-container:hover {
+    transform: scale(1);
+  }
 }

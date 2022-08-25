@@ -35,20 +35,26 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
-    this.authService
-      .register(
-        this.registerForm.get('username').value,
-        this.registerForm.get('password').value
-      )
-      .subscribe({
-        error: (res) => {
-          this.toastr.error(res.error);
-        },
-        next: (res) => {
-          this.route.navigate(['/login']);
-          this.toastr.success('User created successfully');
-        },
-      });
+    if (
+      this.registerForm.this.registerForm.get('username').value !== '' &&
+      this.registerForm.get('password').value !== '' &&
+      this.registerForm.get('confirmPassword').value !== ''
+    ) {
+      this.authService
+        .register(
+          this.registerForm.get('username').value,
+          this.registerForm.get('password').value
+        )
+        .subscribe({
+          error: (res) => {
+            this.toastr.error(res.error);
+          },
+          next: (res) => {
+            this.route.navigate(['/login']);
+            this.toastr.success('User created successfully');
+          },
+        });
+    }
   }
 
   ngOnInit(): void {}

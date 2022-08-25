@@ -4,6 +4,12 @@
   color: black;
 }
 
+@media only screen and (max-width: 600px) {
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    width: 18rem;
+  }
+}
+
 ::ng-deep .mat-form-field-underline {
   display: none;
 }
