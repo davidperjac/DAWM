@@ -23,13 +23,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes
 app.use('/api/v1', require('./src/v1/routes/index'));
 
-// app.all('*', function (req, res) {
-// 	if (env === 'development') {
-// 		res.redirect('http://localhost:3000/api/v1');
-// 	} else {
-// 		res.redirect('https://taskin-mean.herokuapp.com/api/v1');
-// 	}
-// });
+app.all('*', function (req, res) {
+	if (env === 'development') {
+		res.redirect('http://localhost:3000/api/v1');
+	} else {
+		res.redirect('https://dawm-production.up.railway.app/api/v1');
+	}
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
