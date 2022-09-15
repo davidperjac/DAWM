@@ -14,10 +14,10 @@
 		"dialect": "mysql"
 	},
 	"production": {
-		"username": "bbdec02814b225",
-		"password": "9eb6863e",
-		"database": "heroku_738cec49ba37b85",
-		"host": "us-cdbr-east-06.cleardb.net",
+		"username": "root",
+		"password": "04mlyfAARAB64i1aiC2b",
+		"database": "railway",
+		"host": "containers-us-west-74.railway.app",
 		"dialect": "mysql"
 	}
 }
