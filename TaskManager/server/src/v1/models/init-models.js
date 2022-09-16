@@ -1,6 +1,6 @@
 const DataTypes = require('sequelize').DataTypes;
 const _boards = require('./Boards');
-const _tasks = require('./Tasks');
+const _tasks = require('./tasks');
 const _users = require('./Users');
 
 function initModels(sequelize) {
