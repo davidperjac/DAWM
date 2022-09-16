@@ -13,11 +13,11 @@ exports.getTasks = async (req, res) => {
 	try {
 		const { boardId } = req.params;
 
-		const tasks = await models.tasks.findAll({
+		const userTasks = await models.tasks.findAll({
 			where: { boardId: boardId },
 		});
 
-		res.status(200).send(tasks);
+		res.status(200).send(userTasks);
 	} catch (error) {
 		res.status(500).send({ error });
 	}
