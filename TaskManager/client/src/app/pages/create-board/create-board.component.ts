@@ -29,7 +29,7 @@ export class CreateBoardComponent implements OnInit {
   addBoard() {
     if (
       this.boardForm.get('name').value !== '' &&
-      this.boardForm.get('name').description
+      this.boardForm.get('description').value !== ''
     ) {
       this.boardService
         .addBoard(
@@ -42,7 +42,7 @@ export class CreateBoardComponent implements OnInit {
             this.toastr.error(res.error);
           },
           next: (res: any) => {
-            this.toastr.success('Board created successfully');
+            this.toastr.success(res);
             this.router.navigate([`/boards/${this.userId}`]);
           },
         });

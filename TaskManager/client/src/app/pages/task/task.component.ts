@@ -62,7 +62,7 @@ export class TaskComponent implements OnInit {
         this.toastr.success(res);
         this.taskService.getTasks(this.boardId).subscribe({
           error: (res) => {
-            console.log(res.error);
+            this.toastr.error(res.error);
           },
           next: (res: any) => {
             this.tasks = res as Task[];
@@ -79,14 +79,6 @@ export class TaskComponent implements OnInit {
       },
       next: (res: any) => {
         this.toastr.success(res);
-        this.taskService.getTasks(this.boardId).subscribe({
-          error: (res) => {
-            console.log(res.error);
-          },
-          next: (res: any) => {
-            this.tasks = res as Task[];
-          },
-        });
       },
     });
   }
@@ -98,7 +90,7 @@ export class TaskComponent implements OnInit {
     });
     this.taskService.getTasks(this.boardId).subscribe({
       error: (res) => {
-        console.log(res);
+        this.toastr.error(res.error);
       },
       next: (res: any) => {
         this.tasks = res as Task[];

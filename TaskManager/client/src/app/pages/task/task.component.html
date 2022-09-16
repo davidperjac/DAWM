@@ -26,11 +26,15 @@
     <div class="card">
       <h3 class="task">
         <mat-checkbox
-          (change)="completeTask(task.id)"
+          (change)="completeTask(task.taskId)"
           [(ngModel)]="task.isCompleted"
           >{{ task.name }}</mat-checkbox
         >
-        <button mat-icon-button class="delete" (click)="deleteTask(task.id)">
+        <button
+          mat-icon-button
+          class="delete"
+          (click)="deleteTask(task.taskId)"
+        >
           <mat-icon color="warn">delete</mat-icon>
         </button>
       </h3>

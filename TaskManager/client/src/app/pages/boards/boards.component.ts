@@ -38,6 +38,7 @@ export class BoardsComponent implements OnInit {
   deleteBoard(boardId: string) {
     this.boardService.deleteBoard(boardId).subscribe({
       error: (res) => {
+        console.log(res);
         this.toastr.error(res.error);
       },
       next: (res: any) => {

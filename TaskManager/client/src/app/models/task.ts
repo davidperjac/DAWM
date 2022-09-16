@@ -1,5 +1,5 @@
 export interface Task {
-  id: string;
+  taskId: string;
   name: string;
   boardId: string;
   isCompleted: boolean;

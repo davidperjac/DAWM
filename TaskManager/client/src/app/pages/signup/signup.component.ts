@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
 
   register() {
     if (
-      this.registerForm.this.registerForm.get('username').value !== '' &&
+      this.registerForm.get('username').value !== '' &&
       this.registerForm.get('password').value !== '' &&
       this.registerForm.get('confirmPassword').value !== ''
     ) {
@@ -49,9 +49,9 @@ export class SignupComponent implements OnInit {
           error: (res) => {
             this.toastr.error(res.error);
           },
-          next: (res) => {
+          next: (res: any) => {
             this.route.navigate(['/login']);
-            this.toastr.success('User created successfully');
+            this.toastr.success(res);
           },
         });
     }
