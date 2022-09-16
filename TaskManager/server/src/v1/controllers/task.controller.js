@@ -2,8 +2,8 @@ const models = require('../handlers/getModels');
 
 exports.getAllTasks = async (req, res) => {
 	try {
-		const tasks = await models.tasks.findAll();
-		res.status(200).send(tasks);
+		const allTasks = await models.tasks.findAll();
+		res.status(200).send(allTasks);
 	} catch (error) {
 		res.status(500).send({ error });
 	}
