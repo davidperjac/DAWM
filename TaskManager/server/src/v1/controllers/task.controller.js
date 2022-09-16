@@ -1,13 +1,9 @@
-const { ref, child, get, set } = require('firebase/database');
-const firebaseDB = require('../utils/firebase');
-const dbRef = ref(firebaseDB);
+const models = require('../handlers/getModels');
 
 exports.getAllTasks = async (req, res) => {
 	try {
-		const data = await get(child(dbRef, '/'));
-		const boards = data.val().collection;
-
-		res.status(200).send(boards);
+		const tasks = await models.tasks.findAll();
+		res.status(200).send(tasks);
 	} catch (error) {
 		res.status(500).send({ error });
 	}
@@ -17,11 +13,11 @@ exports.getTasks = async (req, res) => {
 	try {
 		const { boardId } = req.params;
 
-		const data = await get(child(dbRef, '/'));
+		const tasks = await models.tasks.findAll({
+			where: { boardId: boardId },
+		});
 
-		const boards = data.val().collection;
-		const boardTasks = boards.filter((x) => x.boardId === boardId);
-		res.status(200).send(boardTasks);
+		res.status(200).send(tasks);
 	} catch (error) {
 		res.status(500).send({ error });
 	}
@@ -32,25 +28,20 @@ exports.addTask = async (req, res) => {
 		const { boardId } = req.params;
 		const { name } = req.body;
 
-		const data = await get(child(dbRef, '/'));
-		const boards = data.val().collection;
+		const checkTask = await models.tasks.findAll({
+			where: {
+				boardId: boardId,
+				name: name,
+			},
+		});
 
-		if (boards.some((b) => b.name === name && b.boardId === boardId)) {
-			return res.status(400).json('Task name already in use');
-		}
+		if (checkTask.length !== 0)
+			return res.status(400).send('Task name already in used');
 
-		const date = new Date();
-		const newBoard = {
+		await models.tasks.create({
 			name: name,
 			boardId: boardId,
-			isCompleted: false,
-			createdAt: 'hoy',
-			id: boards[boards.length - 1].id + 1,
-		};
-
-		const collection = [...boards, newBoard];
-		set(ref(firebaseDB, '/'), {
-			collection,
+			isCompleted: 0,
 		});
 
 		res.status(201).json('Task created successfully');
@@ -63,14 +54,12 @@ exports.deleteTask = async (req, res) => {
 	try {
 		const { taskId } = req.params;
 
-		const data = await get(child(dbRef, '/'));
-		const tasks = data.val().collection;
-
-		const collection = tasks.filter((t) => t.id !== parseInt(taskId));
-
-		set(ref(firebaseDB, '/'), {
-			collection,
+		await models.tasks.destroy({
+			where: {
+				taskId: taskId,
+			},
 		});
+
 		res.status(200).json('Task deleted successfully');
 	} catch (error) {
 		res.status(500).send({ error });
@@ -81,19 +70,21 @@ exports.completeTask = async (req, res) => {
 	try {
 		const { taskId } = req.params;
 
-		const data = await get(child(dbRef, '/'));
-		const tasks = data.val().collection;
+		const updatedTask = await models.tasks.findAll({
+			where: { taskId: taskId },
+		});
 
-		const collection = tasks.map((t) => {
-			if (t.id === parseInt(taskId)) {
-				return { ...t, isCompleted: !t.isCompleted };
+		const isCompleted = updatedTask[0].dataValues.isCompleted;
+
+		await models.tasks.update(
+			{ isCompleted: !Boolean(isCompleted) },
+			{
+				where: {
+					taskId: taskId,
+				},
 			}
-			return t;
-		});
+		);
 
-		set(ref(firebaseDB, '/'), {
-			collection,
-		});
 		res.status(200).json('Task updated successfully');
 	} catch (error) {
 		res.status(500).send({ error });

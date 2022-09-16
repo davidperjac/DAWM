@@ -1,52 +1,52 @@
 const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
 	return sequelize.define(
-		'boards',
+		'tasks',
 		{
-			boardId: {
+			taskId: {
 				type: Sequelize.UUID,
 				defaultValue: Sequelize.UUIDV4,
 				allowNull: false,
 				primaryKey: true,
 			},
 			name: {
-				type: DataTypes.STRING(45),
+				type: DataTypes.STRING(100),
 				allowNull: false,
 			},
-			description: {
-				type: DataTypes.STRING(45),
+			isCompleted: {
+				type: DataTypes.TINYINT,
 				allowNull: false,
 			},
-			userId: {
+			boardId: {
 				type: DataTypes.STRING(100),
 				allowNull: false,
 				references: {
-					model: 'users',
-					key: 'userId',
+					model: 'boards',
+					key: 'boardId',
 				},
 			},
 		},
 		{
 			sequelize,
-			tableName: 'boards',
+			tableName: 'tasks',
 			timestamps: false,
 			indexes: [
 				{
 					name: 'PRIMARY',
 					unique: true,
 					using: 'BTREE',
-					fields: [{ name: 'boardId' }],
+					fields: [{ name: 'taskId' }],
 				},
 				{
-					name: 'boardsId_UNIQUE',
+					name: 'taskId_UNIQUE',
 					unique: true,
 					using: 'BTREE',
-					fields: [{ name: 'boardId' }],
+					fields: [{ name: 'taskId' }],
 				},
 				{
-					name: 'userId_idx',
+					name: 'boardId_idx',
 					using: 'BTREE',
-					fields: [{ name: 'userId' }],
+					fields: [{ name: 'boardId' }],
 				},
 			],
 		}

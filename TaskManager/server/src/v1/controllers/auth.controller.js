@@ -1,11 +1,10 @@
 const models = require('../handlers/getModels');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { token } = require('morgan');
 
 exports.getAllUsers = async (req, res) => {
 	try {
-		const users = await models.Users.findAll();
+		const users = await models.users.findAll();
 		res.json(users);
 	} catch (error) {
 		res.status(500).json(error);
@@ -15,7 +14,7 @@ exports.getAllUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const user = await models.Users.findAll({
+		const user = await models.users.findAll({
 			where: { userId: id },
 		});
 		res.status(200).send(user);
@@ -27,7 +26,7 @@ exports.getUserById = async (req, res) => {
 exports.register = async (req, res) => {
 	try {
 		const { username, password } = req.body;
-		const existingUserByUsername = await models.Users.findAll({
+		const existingUserByUsername = await models.users.findAll({
 			where: { username: username },
 		});
 		if (existingUserByUsername.length !== 0)
@@ -35,11 +34,11 @@ exports.register = async (req, res) => {
 
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		const user = await models.Users.create({
+		await models.users.create({
 			username: username,
 			password: hashedPassword,
 		});
-		res.status(201).json({ user });
+		res.status(201).json('User created successfully');
 	} catch (error) {
 		res.status(500).json(error);
 	}
@@ -48,7 +47,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
 	try {
 		const { username, password } = req.body;
-		const user = await models.Users.findAll({ where: { username: username } });
+		const user = await models.users.findAll({ where: { username: username } });
 		if (user.length === 0) return res.status(401).send('Invalid credentials');
 
 		const hashedPassword = user[0].dataValues.password;
@@ -76,7 +75,7 @@ exports.verifyToken = async (req, res) => {
 		);
 		if (!tokenDecoded) res.status(401).send('Unauthorized');
 
-		const user = await models.Users.findAll({
+		const user = await models.users.findAll({
 			where: { userId: tokenDecoded.id },
 		});
 

@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
 module.exports = function (sequelize, DataTypes) {
 	return sequelize.define(
 		'users',
@@ -21,7 +21,6 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		{
 			sequelize,
-			freezeTableName: true,
 			tableName: 'users',
 			timestamps: false,
 			indexes: [
